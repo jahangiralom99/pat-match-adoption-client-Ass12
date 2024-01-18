@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { BsEyeFill, BsEyeSlashFill, BsGoogle } from "react-icons/bs";
+import { BsEyeFill, BsEyeSlashFill, } from "react-icons/bs";
 import useAuth from "../../Hooks/useAuth";
 import GoogleAndGithub from "../../Components/Common/GoogleAndGithub";
 import Button from "../../Components/Common/Button";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const [isShow, setIsShow] = useState(false);
-    const {login, googleLogin } = useAuth();
+    const {login, } = useAuth();
   const {
     register,
     handleSubmit,
@@ -16,11 +17,32 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data.email);
-      console.log(data.password);
+      try {
+          const res = login(data.email, data.password);
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "User logged in successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(res);
+      } catch (err) {
+        //   console.log(err.message);
+          Swal.fire({
+            position: "top",
+            icon: "error",
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
       
   };
 
+    // console.log(user);
+    
+    
   return (
     <div className="py-16">
       <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl">
@@ -100,7 +122,7 @@ const Login = () => {
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 md:w-1/4"></span>
             <Link to='/register' className="text-xs text-gray-500 uppercase">
-              or <span className="font-bold text-[#ef6f18]">Register</span>
+              or <span className="font-bold border p-2 hover:rounded-full hover:bg-[#ef6f18] hover:text-white text-[#ef6f18]">Register</span>
             </Link>
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>

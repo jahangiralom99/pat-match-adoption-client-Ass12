@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import GoogleAndGithub from "../../Components/Common/GoogleAndGithub";
 import Button from "../../Components/Common/Button";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [isShow, setIsShow] = useState(false);
@@ -19,9 +20,21 @@ const Register = () => {
       try {
         const res = await createUser(data.email, data.password)
           console.log(res.user);
-          
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "User logged in successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
       }catch(err){
-          console.log(err.message);
+        Swal.fire({
+          position: "top",
+          icon: "error",
+          title: `${err.message}`,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
       
   };

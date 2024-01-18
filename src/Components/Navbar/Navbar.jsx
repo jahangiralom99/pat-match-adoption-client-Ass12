@@ -8,9 +8,35 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router-dom";
 import Button from "../Common/Button";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
+  const { user, logOut } = useAuth();
+
+
+  const handleLogOut = async() => {
+    try {
+      await logOut();
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "User logged out successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+    } catch (err) {
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }
 
   const navLinks = (
     <>
@@ -58,17 +84,17 @@ const Navbar = () => {
       </li>
     </>
   );
-
+  console.log(user);
   const phoneAndPcLOgIn = (
     <>
-      <Link to="/login">
+      {user ? <div onClick={handleLogOut}><Button value="Logout"></Button></div> : <Link to="/login">
         <Button value="login"></Button>
-      </Link>
+      </Link>}
     </>
   );
 
   return (
-    <nav className=" mx-auto bg-red-200">
+    <nav className=" mx-auto shadow-lg border-b-2">
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}
@@ -106,7 +132,7 @@ const Navbar = () => {
               onClick={() => setToggleMenu(!toggleMenu)}
               className="lg:hidden flex items-center"
             >
-              {toggleMenu ? (
+              {!toggleMenu ? (
                 <button>
                   <XMarkIcon className="h-10 hover:duration-700 hover:rotate-180" />
                 </button>
