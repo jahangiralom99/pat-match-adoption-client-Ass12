@@ -19,7 +19,7 @@ const Banner = () => {
           hide: true,
         }}
         modules={[Scrollbar]}
-        classNameName="mySwiper"
+        className="mySwiper"
       >
         <SwiperSlide>
           <section className="relative bg-[url(https://i.postimg.cc/h4QkMtGD/slide4.jpg)] bg-cover bg-center bg-no-repeat">
