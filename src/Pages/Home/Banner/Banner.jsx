@@ -114,7 +114,7 @@ const Banner = () => {
 
                 <p className="mt-4 max-w-lg sm:text-xl/relaxed">
                   The best overall dog DNA test is Embark Breed & Health Kit
-                  (view at Chewy), which provid dogs
+                  (view at Chewy), which provide dogs
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
