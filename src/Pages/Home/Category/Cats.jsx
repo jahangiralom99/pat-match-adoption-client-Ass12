@@ -17,8 +17,10 @@ const Cats = () => {
 
   if (isLoading) {
     return <Loader></Loader>;
-  }
-  console.log(animals);
+    }
+
+    
+//   console.log(animals);
   // console.log(Object.keys(animals).join(','));
 
   return (

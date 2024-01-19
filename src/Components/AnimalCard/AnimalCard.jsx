@@ -6,8 +6,6 @@ import PropTypes from "prop-types";
 import Button from "../Common/Button";
 
 const AnimalCard = ({ animal }) => {
-  //   console.log(animal);
-  //   console.log(Object.keys(animal).join(","));
   const { category, name, location, gender, image } = animal || {};
 
   return (
