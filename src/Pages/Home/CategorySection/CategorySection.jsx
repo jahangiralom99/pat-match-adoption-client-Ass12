@@ -11,7 +11,7 @@ const CategorySection = () => {
       <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
         Pets category section
       </h1>
-      <p className="text-[#ef6f18] font-bold">Ours Pets</p>
+      <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">Ours Pets</p>
       <div className="max-w-screen-xl mx-auto mt-8">
         <Swiper
           slidesPerView={1}
@@ -95,7 +95,7 @@ const CategorySection = () => {
                 <img
                   className="md:w-96 md:h-60 w-full hover:bg-opacity-35"
                   src="https://i.postimg.cc/hPTjvMpz/img-08-a0d17e1f-25bd-4fd1-ab1a-53517e86b78d-370x370-crop-top-png.webp"
-                  alt="Fishs"
+                  alt="Fish"
                 />
                 <h1 className="font-bold text-2xl text-center">Fish</h1>
               </div>
