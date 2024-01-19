@@ -8,6 +8,7 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import Dogs from "../../Pages/Home/Category/Dogs";
 import Fish from "../../Pages/Home/Category/Fish";
 import Rabbit from "../../Pages/Home/Category/Rabbit";
+import AnimalDetails from "../../Pages/Home/AnimalDetails/AnimalDetails";
 
 const Route = createBrowserRouter([
   {
@@ -43,10 +44,18 @@ const Route = createBrowserRouter([
             ),
         },
         {
-            path: "rabbit",
+            path: "rabbits",
             element: (
               <PrivetRoute>
                 <Rabbit></Rabbit>
+              </PrivetRoute>
+            ),
+          },
+        {
+            path: "animals/:id",
+            element: (
+              <PrivetRoute>
+                <AnimalDetails></AnimalDetails>
               </PrivetRoute>
             ),
           },

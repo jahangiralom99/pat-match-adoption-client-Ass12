@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "../Common/Button";
 
 const AnimalCard = ({ animal }) => {
-  const { category, name, location, gender, image } = animal || {};
+  const { category, name, location, gender, image, _id } = animal || {};
 
   return (
     <section>
@@ -41,7 +41,7 @@ const AnimalCard = ({ animal }) => {
         </div>
         <div className="absolute opacity-0 group-hover:opacity-80">
           <div className="pt-8 text-center">
-            <Link to="/dogs" className="">
+                      <Link to={`/animals/${_id}`} className="">
               <Button value={"details"}></Button>
               {/* <button className="text-center bg-[#ef6f18] rounded-full p-4 hover:bg-[#c85b13] font-bold text-lg">
               <Button value={"details"}></Button>
