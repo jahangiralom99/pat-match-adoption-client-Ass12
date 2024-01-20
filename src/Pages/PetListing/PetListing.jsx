@@ -16,14 +16,16 @@ const options = [
 
 const PetListing = () => {
   const axios = useAxiosPublic();
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const [textField, setTextField] = useState("");
   // console.log(selectedOption);
   const { data: animals = [], isLoading } = useQuery({
     queryKey: ["all-pets", textField, selectedOption],
     queryFn: async () => {
       const res = await axios.get(
-        `/all-pets?name=${textField || ''}&&category=${selectedOption.value || ''}`
+        `/all-pets?name=${textField || ""}&&category=${
+          selectedOption.value || ""
+        }`
       );
       return res.data;
     },

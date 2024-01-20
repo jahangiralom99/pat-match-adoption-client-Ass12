@@ -1,11 +1,14 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleAndGithub = () => {
+  const navigation = useNavigate();
+  const location = useLocation();
 
-  const {googleLogin } = useAuth();
+  const { googleLogin } = useAuth();
 
-  const handleGoogleLogIn = async() => {
+  const handleGoogleLogIn = async () => {
     try {
       const res = await googleLogin();
       console.log(res);
@@ -14,9 +17,9 @@ const GoogleAndGithub = () => {
         icon: "success",
         title: "Google logged in successfully",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
-
+      navigation(location.state ? location.state : "/");
     } catch (err) {
       console.log(err);
       Swal.fire({
@@ -24,7 +27,7 @@ const GoogleAndGithub = () => {
         icon: "error",
         title: `${err.message}`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     }
   };

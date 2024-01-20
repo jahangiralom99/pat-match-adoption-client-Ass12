@@ -6,37 +6,11 @@ import {
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { Link, NavLink } from "react-router-dom";
-import Button from "../Common/Button";
-import useAuth from "../../Hooks/useAuth";
-import Swal from "sweetalert2";
+import { NavLink } from "react-router-dom";
+import Profile from "./Profile";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
-  const { user, logOut } = useAuth();
-
-
-  const handleLogOut = async() => {
-    try {
-      await logOut();
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "User logged out successfully",
-        showConfirmButton: false,
-        timer: 1500
-      });
-
-    } catch (err) {
-      Swal.fire({
-        position: "top",
-        icon: "error",
-        title: `${err.message}`,
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
-  }
 
   const navLinks = (
     <>
@@ -84,17 +58,10 @@ const Navbar = () => {
       </li>
     </>
   );
-  console.log(user);
-  const phoneAndPcLOgIn = (
-    <>
-      {user ? <div onClick={handleLogOut}><Button value="Logout"></Button></div> : <Link to="/login">
-        <Button value="login"></Button>
-      </Link>}
-    </>
-  );
+  // console.log(user);
 
   return (
-    <nav className=" mx-auto shadow-lg border-b-2">
+    <nav className="sticky top-1 mx-auto bg-slate-50 shadow-lg border-b-2 z-10">
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}
@@ -124,7 +91,9 @@ const Navbar = () => {
                 <SunIcon className="h-6 w-6" />
               </div>
               <div>
-                <div>{phoneAndPcLOgIn}</div>
+                <div className="md:hidden lg:block">
+                  <Profile></Profile>
+                </div>
               </div>
             </div>
             {/* Mobile navigation toggle */}
@@ -147,7 +116,7 @@ const Navbar = () => {
       </div>
       {/* mobile navigation */}
       <div
-        className={`fixed z-40 w-full  bg-gray-200 overflow-hidden flex flex-col lg:hidden  origin-top duration-700 ${
+        className={`fixed z-10 w-full  bg-gray-200 overflow-hidden flex flex-col lg:hidden  origin-top duration-700 ${
           toggleMenu ? "h-0" : "h-full"
         }`}
       >
@@ -155,7 +124,9 @@ const Navbar = () => {
           <div className="flex flex-col gap-8 font-bold tracking-wider list-none">
             {navLinks}
           </div>
-          <div>{phoneAndPcLOgIn}</div>
+          <div className="mt-6">
+            <Profile></Profile>
+          </div>
         </div>
       </div>
     </nav>

@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { BsEyeFill, BsEyeSlashFill, } from "react-icons/bs";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import useAuth from "../../Hooks/useAuth";
 import GoogleAndGithub from "../../Components/Common/GoogleAndGithub";
 import Button from "../../Components/Common/Button";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const [isShow, setIsShow] = useState(false);
-    const {login, } = useAuth();
+  const [isShow, setIsShow] = useState(false);
+  const { login } = useAuth();
+  const location = useLocation();
+  const navigation = useNavigation();
   const {
     register,
     handleSubmit,
@@ -17,32 +19,32 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-      try {
-          const res = login(data.email, data.password);
-          Swal.fire({
-            position: "top",
-            icon: "success",
-            title: "User logged in successfully",
-            showConfirmButton: false,
-            timer: 1500
-          });
-          console.log(res);
-      } catch (err) {
-        //   console.log(err.message);
-          Swal.fire({
-            position: "top",
-            icon: "error",
-            title: `${err.message}`,
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      
+    try {
+      const res = await login(data.email, data.password);
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "User logged in successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigation(location.state? location.state : "/")
+
+      console.log(res);
+    } catch (err) {
+      //   console.log(err.message);
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
-    // console.log(user);
-    
-    
+  // console.log(user);
+
   return (
     <div className="py-16">
       <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl">
@@ -51,11 +53,11 @@ const Login = () => {
         </div>
         <div className="w-full p-8 lg:w-1/2">
           <h2 className="text-2xl font-semibold text-gray-700 text-center">
-           Please Login !
+            Please Login !
           </h2>
-                  <div>
-                      <GoogleAndGithub></GoogleAndGithub>
-         </div>
+          <div>
+            <GoogleAndGithub></GoogleAndGithub>
+          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4 flex items-center justify-between">
               <span className="border-b w-1/5 lg:w-1/4"></span>
@@ -76,8 +78,8 @@ const Login = () => {
                 id="email"
                 name="email"
                 autoComplete="email"
-                          />
-                           {errors.email && (
+              />
+              {errors.email && (
                 <p className="text-red-600">email is Required</p>
               )}
             </div>
@@ -98,8 +100,8 @@ const Login = () => {
                 type={isShow ? "text" : "password"}
                 {...register("password", { required: true })}
                 placeholder="password"
-                          />
-                           {errors.password && (
+              />
+              {errors.password && (
                 <p className="text-red-600">password is Required</p>
               )}
               <div onClick={() => setIsShow(!isShow)} className="ml-2 mt-3">
@@ -112,17 +114,19 @@ const Login = () => {
             </div>
             <div className="mt-8">
               <Button
-                              type="submit"
-                              value="Login"
+                type="submit"
+                value="Login"
                 className="bg-[#ef6f18] text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
-              >
-              </Button>
+              ></Button>
             </div>
           </form>
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 md:w-1/4"></span>
-            <Link to='/register' className="text-xs text-gray-500 uppercase">
-              or <span className="font-bold border p-2 hover:rounded-full hover:bg-[#ef6f18] hover:text-white text-[#ef6f18]">Register</span>
+            <Link to="/register" className="text-xs text-gray-500 uppercase">
+              or{" "}
+              <span className="font-bold border p-2 hover:rounded-full hover:bg-[#ef6f18] hover:text-white text-[#ef6f18]">
+                Register
+              </span>
             </Link>
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>

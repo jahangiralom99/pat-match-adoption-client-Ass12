@@ -1,5 +1,5 @@
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,10 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const [isShow, setIsShow] = useState(false);
-    const { createUser, user} = useAuth();
+  const { createUser, user } = useAuth();
+  const location = useLocation();
+  const navigation = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -23,10 +26,11 @@ const Register = () => {
           Swal.fire({
             position: "top",
             icon: "success",
-            title: "User logged in successfully",
+            title: "User Create successfully",
             showConfirmButton: false,
             timer: 1500
           });
+          navigation(location.state? location.state : "/")
       }catch(err){
         Swal.fire({
           position: "top",
