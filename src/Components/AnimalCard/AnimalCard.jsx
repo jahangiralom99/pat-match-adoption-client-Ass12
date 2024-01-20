@@ -4,8 +4,9 @@ import { TbCategoryPlus, TbWorld } from "react-icons/tb";
 import { FaRegCalendarAlt, FaTransgender } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Button from "../Common/Button";
+import Loader from "../Common/Loader";
 
-const AnimalCard = ({ animal }) => {
+const AnimalCard = ({ animal ,isLoading}) => {
   const { category, name, location, gender, image, _id } = animal || {};
 
   return (
@@ -48,6 +49,7 @@ const AnimalCard = ({ animal }) => {
             </button> */}
             </Link>
           </div>
+          {isLoading && <Loader></Loader>}
         </div>
       </div>
     </section>
@@ -56,6 +58,7 @@ const AnimalCard = ({ animal }) => {
 
 AnimalCard.propTypes = {
   animal: PropTypes.object.isRequired,
+  isLoading: PropTypes.node.isRequired,
 };
 
 export default AnimalCard;

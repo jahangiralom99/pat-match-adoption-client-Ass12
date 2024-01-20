@@ -9,6 +9,7 @@ import Dogs from "../../Pages/Home/Category/Dogs";
 import Fish from "../../Pages/Home/Category/Fish";
 import Rabbit from "../../Pages/Home/Category/Rabbit";
 import AnimalDetails from "../../Pages/Home/AnimalDetails/AnimalDetails";
+import PetListing from "../../Pages/PetListing/PetListing";
 
 const Route = createBrowserRouter([
   {
@@ -34,31 +35,35 @@ const Route = createBrowserRouter([
             <Dogs></Dogs>
           </PrivetRoute>
         ),
-        },
-        {
-            path: "fish",
-            element: (
-              <PrivetRoute>
-                <Fish></Fish>
-              </PrivetRoute>
-            ),
-        },
-        {
-            path: "rabbits",
-            element: (
-              <PrivetRoute>
-                <Rabbit></Rabbit>
-              </PrivetRoute>
-            ),
-          },
-        {
-            path: "animals/:id",
-            element: (
-              <PrivetRoute>
-                <AnimalDetails></AnimalDetails>
-              </PrivetRoute>
-            ),
-          },
+      },
+      {
+        path: "fish",
+        element: (
+          <PrivetRoute>
+            <Fish></Fish>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "rabbits",
+        element: (
+          <PrivetRoute>
+            <Rabbit></Rabbit>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "animals/:id",
+        element: (
+          <PrivetRoute>
+            <AnimalDetails></AnimalDetails>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "pet-listing",
+        element: <PetListing></PetListing>
+      },
       {
         path: "login",
         element: <Login></Login>,

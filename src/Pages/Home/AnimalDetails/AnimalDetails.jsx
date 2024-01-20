@@ -9,7 +9,6 @@ const AnimalDetails = () => {
   const axios = useAxiosPublic();
 
   const { id } = useParams();
-  console.log(id);
 
   const { data: animals, isLoading } = useQuery({
     queryKey: ["data"],
