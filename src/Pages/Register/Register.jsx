@@ -6,12 +6,14 @@ import { useForm } from "react-hook-form";
 import GoogleAndGithub from "../../Components/Common/GoogleAndGithub";
 import Button from "../../Components/Common/Button";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
   const [isShow, setIsShow] = useState(false);
-  const { createUser, user } = useAuth();
+  const { createUser } = useAuth();
   const location = useLocation();
   const navigation = useNavigate();
+  const axios = useAxiosPublic();
 
   const {
     register,
@@ -21,9 +23,14 @@ const Register = () => {
 
   const onSubmit = async (data) => {
       try {
-        const res = await createUser(data.email, data.password)
-          console.log(res.user);
-          Swal.fire({
+        await createUser(data.email, data.password);
+        const userInfo = {
+          email: data.email,
+          name: data.name
+        };
+        const res = await axios.post("/users", userInfo);
+        if(res.data.acknowledged){
+           Swal.fire({
             position: "top",
             icon: "success",
             title: "User Create successfully",
@@ -31,6 +38,11 @@ const Register = () => {
             timer: 1500
           });
           navigation(location.state? location.state : "/")
+        }
+
+// res.data.insertedId
+
+
       }catch(err){
         Swal.fire({
           position: "top",
@@ -43,7 +55,7 @@ const Register = () => {
       
   };
 
-    console.log(user);
+    // console.log(user);
   return (
     <div className="py-16">
       <div className="flex flex-row-reverse bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl gap-5">

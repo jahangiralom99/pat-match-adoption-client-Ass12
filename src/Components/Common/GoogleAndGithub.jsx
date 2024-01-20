@@ -1,25 +1,36 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const GoogleAndGithub = () => {
   const navigation = useNavigate();
   const location = useLocation();
+  const axios = useAxiosPublic();
 
   const { googleLogin } = useAuth();
 
   const handleGoogleLogIn = async () => {
     try {
-      const res = await googleLogin();
-      console.log(res);
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "Google logged in successfully",
-        showConfirmButton: false,
-        timer: 1500,
+      await googleLogin().then((result) => {
+        const userInfo = {
+          email: result.user.email,
+          name: result.user.displayName,
+        };
+        axios.post("/users", userInfo)
+          .then(res => {
+            console.log(res);
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "Google logged in successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigation(location.state ? location.state : "/");
+        })
+       
       });
-      navigation(location.state ? location.state : "/");
     } catch (err) {
       console.log(err);
       Swal.fire({

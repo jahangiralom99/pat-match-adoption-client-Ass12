@@ -42,9 +42,9 @@ const Profile = () => {
         </Link>
       )}
     </>
-    );
-    
-    console.log(user);
+  );
+
+  console.log(user);
 
   return (
     <div className="text-center">
@@ -74,13 +74,10 @@ const Profile = () => {
               role="menuitem"
             >
               {user?.displayName}
-              <span className="ml-2 text-sm font-semibold text-red-500">
-                New
-              </span>
             </a>
             <Link
               to="dashboard"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm font-semibold bg-slate-50 text-gray-700 hover:text-[#ef6f18]"
               role="menuitem"
             >
               Dashboard

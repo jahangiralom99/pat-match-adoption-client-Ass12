@@ -56,7 +56,7 @@ const PetListing = () => {
         </div>
         <div>
           <Select
-            className="px-3"
+            className="px-3 border-[#ef6f18]"
             defaultValue={selectedOption}
             onChange={setSelectedOption}
             options={options}
