@@ -19,7 +19,7 @@ const GoogleAndGithub = () => {
         };
         axios.post("/users", userInfo)
           .then(res => {
-            // console.log(res);
+            console.log(res);
             Swal.fire({
               position: "top",
               icon: "success",

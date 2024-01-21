@@ -24,7 +24,7 @@ const DonationCampingCard = ({ donate }) => {
             <span className=" bg-white rounded-full text-orange-500 text-[16px] font-bold px-3 py-2 leading-none flex items-center">
               Donate : {amount} $
             </span>
-            <Link to={`/details/${_id}`}>
+            <Link to={`/details-campaigns/${_id}`}>
               <Button value={"details"}></Button>
             </Link>
           </div>

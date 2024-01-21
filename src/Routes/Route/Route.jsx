@@ -11,6 +11,7 @@ import Rabbit from "../../Pages/Home/Category/Rabbit";
 import AnimalDetails from "../../Pages/Home/AnimalDetails/AnimalDetails";
 import PetListing from "../../Pages/PetListing/PetListing";
 import DonationCampaigns from "../../Pages/DonationCampaigns/DonationCampaigns";
+import DonateCampingDetails from "../../Pages/DonationCampaigns/DonateCampingDetails";
 
 const Route = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const Route = createBrowserRouter([
       {
         path: "donation-campaign",
         element : <DonationCampaigns></DonationCampaigns>
+      },
+      {
+        path: "details-campaigns/:id",
+        element: <PrivetRoute><DonateCampingDetails></DonateCampingDetails></PrivetRoute>
       },
       {
         path: "login",

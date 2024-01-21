@@ -1,34 +1,33 @@
 import { useParams } from "react-router-dom";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import Loader from "../../../Components/Common/Loader";
-import TopBar from "../../../Components/Common/TopBar";
-import Button from "../../../Components/Common/Button";
+import Button from "../../Components/Common/Button";
+import TopBar from "../../Components/Common/TopBar";
 import { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
-import Swal from "sweetalert2";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+} from "@stripe/react-stripe-js";
+import CheckOutForm from "./CheckOutForm";
 
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
-const AnimalDetails = () => {
+const DonateCampingDetails = () => {
+  const { id } = useParams();
   const axios = useAxiosPublic();
   const [showModal, setShowModal] = useState(false);
-  const { user } = useAuth();
+  
 
-  const { id } = useParams();
-
-  const { data: animals, isLoading } = useQuery({
-    queryKey: ["data"],
+  const { data: donate } = useQuery({
+    queryKey: ["donates", id, axios],
     queryFn: async () => {
-      const res = await axios.get(`/all-pets/${id}`);
+      const res = await axios.get(`all-donate-pets/${id}`);
       return res.data;
     },
   });
 
-  if (isLoading) {
-    return <Loader></Loader>;
-  }
-
   const {
+    dogId,
     category,
     name,
     age,
@@ -40,48 +39,23 @@ const AnimalDetails = () => {
     size,
     vaccinated,
     date,
-    blog_img,
-  } = animals || {};
+    maximum_donation,
+    amount,
+    image,
+  } = donate || {};
 
-  const handleAdoptBtn = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const adoptInfo = {
-      name: user.displayName,
-      email: user.email,
-      number: e.target.number.value,
-      address: e.target.address.value,
-    };
-    try {
-      const res = await axios.post("/add-Adoptions", adoptInfo);
-      if (res.data.acknowledged) {
-        form.reset();
-        setShowModal(false);
-        Swal.fire({
-          title: "Pet Adopt Successful",
-          text: `Good Job! 👍`,
-          icon: "success",
-        });
-      }
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-
-    // console.log(adoptInfo);
-  };
-
+ 
   return (
     <section className="max-w-screen-xl mx-auto">
       <TopBar></TopBar>
       <div className="md:flex gap-6">
-        <div className="bg-[#ffff] p-5 px-6 rounded-lg shadow-lg md:w-[70%] space-y-6">
+        <div className="bg-[#f7f4f4] p-5  rounded-lg shadow-lg md:w-[70%] space-y-6">
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}
             About {name}{" "}
           </h1>
           <p>{description}</p>
-          <img className="w-full" src={blog_img} alt="animals" />
+          <img className="w-full rounded-xl" src={image} alt="animals" />
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}
             {name} Bio
@@ -106,7 +80,7 @@ const AnimalDetails = () => {
             </div>
             <div>
               <h3 className="text-xl font-medium">Pet ID :</h3>
-              <p className="text-[#ef6f18] font-semibold">1 NO</p>
+              <p className="text-[#ef6f18] font-semibold">{dogId}</p>
             </div>
             <div>
               <h3 className="text-xl font-medium">Size :</h3>
@@ -127,11 +101,26 @@ const AnimalDetails = () => {
               <p className="text-[#ef6f18] font-semibold">{date}</p>
             </div>
           </div>
-          <div onClick={() => setShowModal(true)} className="mt-12 p-4 ">
-            <Button value={"Adopt Now"}></Button>
+          <div className="flex flex-col text-center justify-center space-y-4">
+            <h3 className="text-xl font-medium">
+              Donate Amount :{" "}
+              <span className="text-[#ef6f18] font-semibold">$ {amount}</span>
+            </h3>
+            <h3 className="text-xl font-medium">
+              Maximum Donation :{" "}
+              <span className="text-[#ef6f18] font-semibold">
+                $ {maximum_donation}
+              </span>
+            </h3>
+          </div>
+          <div
+            onClick={() => setShowModal(true)}
+            className="mt-12 p-4 text-center"
+          >
+            <Button value={" Donate Now"}></Button>
           </div>
         </div>
-        <div className="bg-[#143556] h-[550px] p-5 rounded-lg sticky top-2">
+        <div className="bg-[#143556] h-[550px] p-5 rounded-lg sticky top-2 mt-5 md:mt-0">
           <div className="text-center pt-12 ">
             <img
               className="inline "
@@ -162,13 +151,13 @@ const AnimalDetails = () => {
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[999] outline-none focus:outline-none ">
-            <div className="relative w-auto md:w-[500px] my-6 mx-auto max-w-3xl">
+            <div className="relative w-auto md:w-[600px] my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-10 border-b border-solid border-blueGray-200 rounded-t ">
                   <h3 className="text-3xl font-semibold border-l-4 border-[#ef6f18]">
-                    Adopt Now
+                    Donation Now
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -179,31 +168,13 @@ const AnimalDetails = () => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form onSubmit={handleAdoptBtn}>
-                    <div>
-                      <p className="font-bold">Phone Number </p>
-                      <input
-                        className="border border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] outline-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                        type="number"
-                        name="number"
-                        id="number"
-                        placeholder="Enter Your phone number"
-                      />
-                    </div>
-                    <div className="mt-6">
-                      <p className="font-bold">Your Address</p>
-                      <input
-                        className="border border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] outline-none"
-                        type="text"
-                        name="address"
-                        id="address"
-                        placeholder="Enter Your Address"
-                      />
-                    </div>
-                    <div type="submit" className="mt-4">
-                      <Button value={"Adopt Now"}></Button>
-                    </div>
-                  </form>
+                  {/* stripe donate for stripe */}
+                  <Elements stripe={stripePromise}>
+                    <CheckOutForm
+                      donate={donate}
+                      setShowModal={setShowModal}
+                    ></CheckOutForm>
+                  </Elements>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -225,4 +196,4 @@ const AnimalDetails = () => {
   );
 };
 
-export default AnimalDetails;
+export default DonateCampingDetails;

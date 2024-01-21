@@ -40,7 +40,6 @@ const PetListing = () => {
     console.log(e.target.search.value);
     setTextField(e.target.search.value);
   };
-  console.log(animals);
   return (
     <section className="max-w-screen-xl mx-auto">
       
