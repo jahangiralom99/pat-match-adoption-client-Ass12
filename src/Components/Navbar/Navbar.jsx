@@ -35,7 +35,7 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "active border-l-4 border-[#ef6f18]"
+              ? "active border-l-4 border-[#ef6f18] font-bold"
               : ""
           }
         >
@@ -44,12 +44,12 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/donation-campaigns"
+          to="/donation-campaign"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
               : isActive
-              ? "active border-l-4 border-gray-600"
+              ? "active border-l-4 border-[#ef6f18] font-bold"
               : ""
           }
         >
@@ -61,7 +61,7 @@ const Navbar = () => {
   // console.log(user);
 
   return (
-    <nav className="sticky top-1 mx-auto bg-slate-50 shadow-lg border-b-2 z-10">
+    <nav className="sticky top-0 bg-opacity-90 mx-auto bg-slate-50 shadow-lg border-b-2 z-[999]">
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}

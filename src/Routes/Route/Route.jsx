@@ -10,6 +10,7 @@ import Fish from "../../Pages/Home/Category/Fish";
 import Rabbit from "../../Pages/Home/Category/Rabbit";
 import AnimalDetails from "../../Pages/Home/AnimalDetails/AnimalDetails";
 import PetListing from "../../Pages/PetListing/PetListing";
+import DonationCampaigns from "../../Pages/DonationCampaigns/DonationCampaigns";
 
 const Route = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const Route = createBrowserRouter([
       {
         path: "pet-listing",
         element: <PetListing></PetListing>
+      },
+      {
+        path: "donation-campaign",
+        element : <DonationCampaigns></DonationCampaigns>
       },
       {
         path: "login",

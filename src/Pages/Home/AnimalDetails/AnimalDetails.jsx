@@ -43,7 +43,7 @@ const AnimalDetails = () => {
   return (
     <section className="max-w-screen-xl mx-auto">
       <TopBar></TopBar>
-      <div className="md:flex ">
+      <div className="md:flex gap-6">
         <div className="bg-[#f7f4f4] p-5  rounded-lg shadow-lg md:w-[70%] space-y-6">
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}

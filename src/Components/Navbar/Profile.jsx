@@ -44,7 +44,7 @@ const Profile = () => {
     </>
   );
 
-  console.log(user);
+//   console.log(user);
 
   return (
     <div className="text-center">
