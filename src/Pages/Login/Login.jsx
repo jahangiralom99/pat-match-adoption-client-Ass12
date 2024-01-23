@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigation } from "react-router-dom";
+import { Link, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
@@ -11,7 +11,7 @@ const Login = () => {
   const [isShow, setIsShow] = useState(false);
   const { login } = useAuth();
   const location = useLocation();
-  const navigation = useNavigation();
+  const navigation = useNavigate();
   const {
     register,
     handleSubmit,

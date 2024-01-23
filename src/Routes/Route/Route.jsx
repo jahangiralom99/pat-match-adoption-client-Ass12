@@ -12,6 +12,16 @@ import AnimalDetails from "../../Pages/Home/AnimalDetails/AnimalDetails";
 import PetListing from "../../Pages/PetListing/PetListing";
 import DonationCampaigns from "../../Pages/DonationCampaigns/DonationCampaigns";
 import DonateCampingDetails from "../../Pages/DonationCampaigns/DonateCampingDetails";
+import DashBoardLayout from "../../Layout/DashBoardLayout";
+import AddAPet from "../../Pages/DashBord/AddAPet/AddAPet";
+import MyAddedPet from "../../Pages/DashBord/MyAddedPet/MyAddedPet";
+import AdoptionRequest from "../../Pages/DashBord/AdoptionRequest/AdoptionRequest";
+import CreateDonationCampaign from "../../Pages/DashBord/CreateDonationCampaign/CreateDonationCampaign";
+import MyDonationCampaigns from "../../Pages/DashBord/MyDonationCampaigns/MyDonationCampaigns";
+import MyDonations from "../../Pages/DashBord/MyDonations/MyDonations";
+import User from "../../Pages/DashBord/AdminDashboard/User/User";
+import AllPets from "../../Pages/DashBord/AdminDashboard/AllPets/AllPets";
+import AllDonations from "../../Pages/DashBord/AdminDashboard/AllDonations/AllDonations";
 
 const Route = createBrowserRouter([
   {
@@ -64,15 +74,19 @@ const Route = createBrowserRouter([
       },
       {
         path: "pet-listing",
-        element: <PetListing></PetListing>
+        element: <PetListing></PetListing>,
       },
       {
         path: "donation-campaign",
-        element : <DonationCampaigns></DonationCampaigns>
+        element: <DonationCampaigns/>,
       },
       {
         path: "details-campaigns/:id",
-        element: <PrivetRoute><DonateCampingDetails></DonateCampingDetails></PrivetRoute>
+        element: (
+          <PrivetRoute>
+            <DonateCampingDetails/>
+          </PrivetRoute>
+        ),
       },
       {
         path: "login",
@@ -82,6 +96,63 @@ const Route = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivetRoute>
+        <DashBoardLayout/>
+      </PrivetRoute>
+    ),
+    children: [
+      // normal user path to dashboard
+      {
+        index: true,
+        element: <></>,
+      },
+      {
+        path: "dashboard",
+        element: <></>,
+      },
+      {
+        path: "addAPet",
+        element: <AddAPet></AddAPet>,
+      },
+      {
+        path: "myAddPets",
+        element: <MyAddedPet/>
+      },
+      {
+        path: "adoption-request",
+        element: <AdoptionRequest/>
+      },
+      {
+        path: "create-donation-campaign",
+        element: <CreateDonationCampaign/>
+      },
+      {
+        path: "my-donation-campaigns",
+        element: <MyDonationCampaigns/>
+      },
+      {
+        path: "my-donations",
+        element: <MyDonations/>
+      },
+      // Admin Routes ALL
+      {
+        path: 'user',
+       element: <User/> 
+      },
+      {
+        path: "all-pets",
+        element: <AllPets/>
+      },
+      {
+        path: "all-donations",
+        element: <AllDonations/>
+      }
+     
     ],
   },
 ]);

@@ -1,9 +1,13 @@
 import axios from "axios";
+import useAuth from "./useAuth";
+import { useNavigate } from "react-router-dom";
 
 const instance = axios.create({
   baseURL : 'http://localhost:3000/api/v1'
 })
 const useAxiosPrivet = () => {
+  const { logOut } = useAuth()
+  const navigate = useNavigate();
 
   instance.interceptors.request.use(function (config) {
     // Do something before request is sent
@@ -21,8 +25,12 @@ const useAxiosPrivet = () => {
   }, async (error) => {
     const status = error.response.status;
     if (status === 401 || status === 403) {
-      console.log(status);
+      // console.log(status);
+      await logOut();
+      navigate('/login')
     }
+
+   
 
     return Promise.reject(error);
   });

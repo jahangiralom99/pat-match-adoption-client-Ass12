@@ -8,9 +8,12 @@ import Button from "../../Components/Common/Button";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_API_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const Register = () => {
   const [isShow, setIsShow] = useState(false);
-  const { createUser } = useAuth();
+  const { createUser, updateName } = useAuth();
   const location = useLocation();
   const navigation = useNavigate();
   const axios = useAxiosPublic();
@@ -22,40 +25,46 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const imageFile = { image: data.photo[0] };
+    const res = await axios.post(image_hosting_api, imageFile, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    if (res.data.success) {
+      const url = res.data?.data?.display_url
       try {
         await createUser(data.email, data.password);
+
+        await updateName(data.name,url);
         const userInfo = {
           email: data.email,
-          name: data.name
+          name: data.name,
         };
         const res = await axios.post("/users", userInfo);
-        if(res.data.acknowledged){
-           Swal.fire({
+        if (res.data.acknowledged) {
+          Swal.fire({
             position: "top",
             icon: "success",
             title: "User Create successfully",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
-          navigation(location.state? location.state : "/")
+          navigation(location.state ? location.state : "/");
         }
 
-// res.data.insertedId
-
-
-      }catch(err){
+        // res.data.insertedId
+      } catch (err) {
         Swal.fire({
           position: "top",
           icon: "error",
           title: `${err.message}`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
       }
-      
+    }
   };
 
-    // console.log(user);
+  // console.log(user);
   return (
     <div className="py-16">
       <div className="flex flex-row-reverse bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl gap-5">
@@ -151,7 +160,7 @@ const Register = () => {
               )}
               {errors.password?.type === "pattern" && (
                 <p className="text-red-500">
-                  password must be 1 uppercase 1 special characters & 
+                  password must be 1 uppercase 1 special characters &
                 </p>
               )}
               <div onClick={() => setIsShow(!isShow)} className="ml-2 mt-3">

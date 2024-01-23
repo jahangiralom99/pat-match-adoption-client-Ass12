@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { user, logOut } = useAuth();
+
 
   const handleLogOut = async () => {
     try {
@@ -44,8 +44,6 @@ const Profile = () => {
     </>
   );
 
-//   console.log(user);
-
   return (
     <div className="text-center">
       <div className="relative inline-block text-left">
@@ -57,7 +55,7 @@ const Profile = () => {
             >
               <img
                 className="h-10 w-10 rounded-full"
-                src={user?.photoURL}
+                src={user?.photoURL || ""}
                 alt="User profile"
               />
             </button>
@@ -75,13 +73,15 @@ const Profile = () => {
             >
               {user?.displayName}
             </a>
-            <Link
-              to="dashboard"
-              className="block px-4 py-2 text-sm font-semibold bg-slate-50 text-gray-700 hover:text-[#ef6f18]"
-              role="menuitem"
-            >
-              Dashboard
-            </Link>
+            {user && (
+              <Link
+                to="dashboard"
+                className="block px-4 py-2 text-sm font-semibold bg-slate-50 text-gray-700 hover:text-[#ef6f18]"
+                role="menuitem"
+              >
+                Dashboard
+              </Link>
+            )}
             <div>{phoneAndPcLOgIn}</div>
           </div>
         </div>
