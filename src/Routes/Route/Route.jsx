@@ -22,6 +22,7 @@ import MyDonations from "../../Pages/DashBord/MyDonations/MyDonations";
 import User from "../../Pages/DashBord/AdminDashboard/User/User";
 import AllPets from "../../Pages/DashBord/AdminDashboard/AllPets/AllPets";
 import AllDonations from "../../Pages/DashBord/AdminDashboard/AllDonations/AllDonations";
+import AddPets from "../../Pages/DashBord/AdminDashboard/AddPets/AddPets";
 
 const Route = createBrowserRouter([
   {
@@ -149,9 +150,17 @@ const Route = createBrowserRouter([
         element: <AllPets/>
       },
       {
+        path: "Add-pets",
+        element: <AddPets/>
+      },
+      {
+        path: "update/:id",
+        element: <>milon </>
+      },
+      {
         path: "all-donations",
         element: <AllDonations/>
-      }
+      },
      
     ],
   },

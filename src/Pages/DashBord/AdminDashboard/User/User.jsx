@@ -83,7 +83,7 @@ const User = () => {
       <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">
         user
       </p>
-      <div className="mt-12">
+      <div className="mt-12 mb-8">
         <div className="p-6 overflow-scroll px-0">
           <table className="mt-4 w-full min-w-max table-auto text-left">
             <thead>

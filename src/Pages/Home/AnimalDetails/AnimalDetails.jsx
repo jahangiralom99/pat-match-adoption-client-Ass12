@@ -41,6 +41,7 @@ const AnimalDetails = () => {
     size,
     vaccinated,
     date,
+    image,
     blog_img,
   } = animals || {};
 
@@ -82,7 +83,7 @@ const AnimalDetails = () => {
             About {name}{" "}
           </h1>
           <p>{description}</p>
-          <img className="w-full" src={blog_img} alt="animals" />
+          <img className="w-full" src={ blog_img||image} alt="animals" />
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}
             {name} Bio
