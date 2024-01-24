@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivet from "../../../../Hooks/useAxiosPrivet";
 import Loader from "../../../../Components/Common/Loader";
-import { MdOutlineAddBox,} from "react-icons/md";
+import { MdOutlineAddBox, MdOutlineDeleteOutline } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllPets = () => {
   const axios = useAxiosPrivet();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["all-pets"],
     queryFn: async () => {
       const res = await axios.get("/all-pets");
@@ -20,7 +21,30 @@ const AllPets = () => {
     return <Loader></Loader>;
   }
 
-  console.log(data);
+  const handleDeleteUser = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axios.delete(`/pet-deleted/${id}`);
+        // console.log(res);
+        if (res.data.deletedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
 
   return (
     <section>
@@ -54,6 +78,11 @@ const AllPets = () => {
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
                     Status
+                  </p>
+                </th>
+                <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                  <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
+                    Action
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
@@ -102,6 +131,13 @@ const AllPets = () => {
                         >
                           <MdOutlineAddBox className="text-xl " /> Add pet
                         </Link>
+                      </div>
+                    </td>
+                    <td className="p-4 border-b border-blue-gray-50">
+                      <div onClick={() => handleDeleteUser(table._id)}>
+                        <button className="p-2 border bg-red-500 rounded-lg hover:bg-red-700">
+                          <MdOutlineDeleteOutline className="text-2xl text-white" />
+                        </button>
                       </div>
                     </td>
                   </tr>

@@ -23,6 +23,8 @@ import User from "../../Pages/DashBord/AdminDashboard/User/User";
 import AllPets from "../../Pages/DashBord/AdminDashboard/AllPets/AllPets";
 import AllDonations from "../../Pages/DashBord/AdminDashboard/AllDonations/AllDonations";
 import AddPets from "../../Pages/DashBord/AdminDashboard/AddPets/AddPets";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import UpdatePet from "../../Pages/DashBord/AdminDashboard/UpdatePet/UpdatePet";
 
 const Route = createBrowserRouter([
   {
@@ -79,13 +81,13 @@ const Route = createBrowserRouter([
       },
       {
         path: "donation-campaign",
-        element: <DonationCampaigns/>,
+        element: <DonationCampaigns />,
       },
       {
         path: "details-campaigns/:id",
         element: (
           <PrivetRoute>
-            <DonateCampingDetails/>
+            <DonateCampingDetails />
           </PrivetRoute>
         ),
       },
@@ -103,7 +105,7 @@ const Route = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivetRoute>
-        <DashBoardLayout/>
+        <DashBoardLayout />
       </PrivetRoute>
     ),
     children: [
@@ -122,46 +124,65 @@ const Route = createBrowserRouter([
       },
       {
         path: "myAddPets",
-        element: <MyAddedPet/>
+        element: <MyAddedPet />,
       },
       {
         path: "adoption-request",
-        element: <AdoptionRequest/>
+        element: <AdoptionRequest />,
       },
       {
         path: "create-donation-campaign",
-        element: <CreateDonationCampaign/>
+        element: <CreateDonationCampaign />,
       },
       {
         path: "my-donation-campaigns",
-        element: <MyDonationCampaigns/>
+        element: <MyDonationCampaigns />,
       },
       {
         path: "my-donations",
-        element: <MyDonations/>
+        element: <MyDonations />,
       },
       // Admin Routes ALL
       {
-        path: 'user',
-       element: <User/> 
+        path: "user",
+        element: (
+          <AdminRoute>
+            <User />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-pets",
-        element: <AllPets/>
+        element: (
+          <AdminRoute>
+            <AllPets />
+          </AdminRoute>
+        ),
       },
       {
         path: "Add-pets",
-        element: <AddPets/>
+        element: (
+          <AdminRoute>
+            <AddPets />
+          </AdminRoute>
+        ),
       },
       {
         path: "update/:id",
-        element: <>milon </>
+        element: (
+          <AdminRoute>
+            <UpdatePet />
+          </AdminRoute>
+        ),
       },
       {
         path: "all-donations",
-        element: <AllDonations/>
+        element: (
+          <AdminRoute>
+            <AllDonations />
+          </AdminRoute>
+        ),
       },
-     
     ],
   },
 ]);

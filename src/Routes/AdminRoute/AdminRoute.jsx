@@ -1,17 +1,17 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import PropTypes from "prop-types";
+import useAdmin from "../../Hooks/useAdmin";
+import Loader from "../../Components/Common/Loader";
 
 const AdminRoute = ({ children }) => {
   const { user, loader } = useAuth();
-//   const [isAdmin, isAdminLoading] = useAdmin();
+  const [isAdmin,isLoading, ] = useAdmin();
   const location = useLocation();
 
-  if (loader) {
+  if (loader || isLoading) {
     return (
-      <h1 className="text-5xl font-bold flex h-screen items-center justify-center">
-        <span className="loading loading-spinner text-error w-40"></span>
-      </h1>
+      <Loader></Loader>
     );
   }
 
@@ -19,7 +19,7 @@ const AdminRoute = ({ children }) => {
   //     return children;
   // }
 
-  if (!user) {
+  if (!user || !isAdmin) {
     return <Navigate state={location.pathname} to="/login"></Navigate>;
   }
 
