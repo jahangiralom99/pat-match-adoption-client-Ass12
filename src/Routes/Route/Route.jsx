@@ -25,6 +25,7 @@ import AllDonations from "../../Pages/DashBord/AdminDashboard/AllDonations/AllDo
 import AddPets from "../../Pages/DashBord/AdminDashboard/AddPets/AddPets";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import UpdatePet from "../../Pages/DashBord/AdminDashboard/UpdatePet/UpdatePet";
+import UserUpdatePet from "../../Pages/DashBord/UserUpdatePet/UserUpdatePet";
 
 const Route = createBrowserRouter([
   {
@@ -120,15 +121,35 @@ const Route = createBrowserRouter([
       },
       {
         path: "addAPet",
-        element: <AddAPet></AddAPet>,
+        element: (
+          <PrivetRoute>
+            <AddAPet></AddAPet>
+          </PrivetRoute>
+        ),
       },
       {
         path: "myAddPets",
-        element: <MyAddedPet />,
+        element: (
+          <PrivetRoute>
+            <MyAddedPet />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "pet-update/:id",
+        element: (
+          <PrivetRoute>
+            <UserUpdatePet />
+          </PrivetRoute>
+        ),
       },
       {
         path: "adoption-request",
-        element: <AdoptionRequest />,
+        element: (
+          <PrivetRoute>
+            <AdoptionRequest />
+          </PrivetRoute>
+        ),
       },
       {
         path: "create-donation-campaign",

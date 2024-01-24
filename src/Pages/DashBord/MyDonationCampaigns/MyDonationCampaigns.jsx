@@ -1,11 +1,5 @@
-
-
 const MyDonationCampaigns = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return <div>dfgfhgfhg</div>;
 };
 
 export default MyDonationCampaigns;
