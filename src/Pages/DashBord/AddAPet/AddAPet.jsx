@@ -36,6 +36,7 @@ const AddAPet = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -73,6 +74,7 @@ const AddAPet = () => {
           text: "Pet Added successfully",
           icon: "success",
         });
+        reset();
       }
 
       //     console.log(addPetsInfo);

@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 
-const TopBar = () => {
+const TopBar = ({value}) => {
   return (
       <div
         className="h-[400px] place-items-stretch bg-no-repeat object-cover mx-auto"
@@ -13,7 +14,7 @@ const TopBar = () => {
             <h1 className="mb-5 text-5xl font-bold"></h1>
                   <div className="flex flex-col justify-center pt-28">
                   <h1 className="text-[#ef6f18] text-4xl font-bold  ">
-              Pets Listing
+              Pets Listing - {value}
             </h1>
             </div>
           </div>

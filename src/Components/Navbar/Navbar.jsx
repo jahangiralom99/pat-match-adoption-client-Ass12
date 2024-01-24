@@ -56,6 +56,34 @@ const Navbar = () => {
           Donation Campaigns
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/gallery"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "active border-l-4 border-[#ef6f18] font-bold"
+              : ""
+          }
+        >
+          Gallery
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/aboutUs"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "active border-l-4 border-[#ef6f18] font-bold"
+              : ""
+          }
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
   // console.log(user);

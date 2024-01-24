@@ -10,14 +10,14 @@ const AdoptionRequest = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["adoption", user?.email],
     queryFn: async () => {
-      const res = await axios.get(`/all-pet-adoption?email=${user?.email}`);
+      const res = await axios.get(`/pet-adoption?email=${user?.email}`);
       return res.data;
     },
   });
 
   if (isLoading) {
-  return <Loader></Loader>
-}
+    return <Loader></Loader>;
+  }
 
   return (
     <section>
@@ -40,22 +40,27 @@ const AdoptionRequest = () => {
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet image
+                    Name
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet name
+                    image
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet Category
+                    Email
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Adoption Status
+                    Location
+                  </p>
+                </th>
+                <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                  <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
+                    phone number
                   </p>
                 </th>
               </tr>
@@ -71,20 +76,24 @@ const AdoptionRequest = () => {
                     </td>
                     <td className="p-4 border-b border-blue-gray-50">
                       <div>
-                        <img
-                          src={table.image}
-                          alt="John Michael"
-                          className="inline-block relative object-cover object-center !rounded-full w-9 h-9"
-                        />
+                        <p>{table.name}</p>
                       </div>
                     </td>
                     <td className="p-4 border-b border-blue-gray-50">
-                      <p>{table.name}</p>
-                    </td>
-                    <td className="p-4 border-b border-blue-gray-50 text-center">
-                      <p>{table.category}</p>
+                      <div>
+                        <img className="size-12" src={user?.photoURL} alt="" />
+                      </div>
                     </td>
                     <td className="p-4 border-b border-blue-gray-50">
+                      <p>{table.email}</p>
+                    </td>
+                    <td className="p-4 border-b border-blue-gray-50">
+                      <p>{table.address}</p>
+                    </td>
+                    <td className="p-4 border-b border-blue-gray-50 ">
+                      <p>{table.number}</p>
+                    </td>
+                    {/* <td className="p-4 border-b border-blue-gray-50">
                       <p>
                         {!table.adopted ? (
                           <spa className="text-red-500 font-bold">Pending</spa>
@@ -94,7 +103,7 @@ const AdoptionRequest = () => {
                           </spa>
                         )}
                       </p>
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
