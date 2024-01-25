@@ -8,9 +8,11 @@ import {
 } from "@heroicons/react/24/outline";
 import { NavLink } from "react-router-dom";
 import Profile from "./Profile";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
+  const { darkMode, setDarkMode } = useAuth();
 
   const navLinks = (
     <>
@@ -72,6 +74,20 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/inspawration-station"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "active border-l-4 border-[#ef6f18] font-bold"
+              : ""
+          }
+        >
+          Inspawration Station
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to="/aboutUs"
           className={({ isActive, isPending }) =>
             isPending
@@ -89,7 +105,11 @@ const Navbar = () => {
   // console.log(user);
 
   return (
-    <nav className="sticky top-0 bg-opacity-90 mx-auto bg-slate-50 shadow-lg border-b-2 z-[999]">
+    <nav
+      className={`sticky top-0 bg-opacity-90 mx-auto ${
+        !darkMode ? "bg-slate-50" : "text-white dark:bg-[#1e293b]"
+      } shadow-lg border-b-2 z-[99]`}
+    >
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}
@@ -114,9 +134,15 @@ const Navbar = () => {
           {/* secondary */}
           <div className="flex gap-6">
             <div className="hidden sm:flex items-center gap-10">
-              <div className="flex items-center gap-2">
-                <MoonIcon className="h-6 w-6" />
-                <SunIcon className="h-6 w-6" />
+              <div
+                onClick={() => setDarkMode(!darkMode)}
+                className="flex items-center gap-2 duration-700 rotate-180"
+              >
+                {!darkMode ? (
+                  <MoonIcon className="h-6 w-6 hover:duration-700 hover:rotate-180" />
+                ) : (
+                  <SunIcon className="h-6 w-6 hover:duration-700 hover:rotate-180" />
+                )}
               </div>
               <div>
                 <div className="md:hidden lg:block">
@@ -144,7 +170,7 @@ const Navbar = () => {
       </div>
       {/* mobile navigation */}
       <div
-        className={`fixed z-10 w-full  bg-gray-200 overflow-hidden flex flex-col lg:hidden  origin-top duration-700 ${
+        className={`fixed z-10 w-full text-white bg-gray-600 overflow-hidden flex flex-col lg:hidden  origin-top duration-700 ${
           toggleMenu ? "h-0" : "h-full"
         }`}
       >

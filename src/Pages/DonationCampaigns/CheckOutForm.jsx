@@ -112,7 +112,7 @@ const CheckOutForm = ({ donate, setShowModal }) => {
           <p className="font-bold">Donation Amount</p>
           <input
             onChange={(e) => setAmount(e.target.value)}
-            className="border text-black border-red-400 py-3 px-6 w-full rounded-md mt-3 placeholder-[#ef6f18] outline-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+            className="border text-[#ef6f18] border-red-400 py-3 px-6 w-full rounded-md mt-3 placeholder-[#ef6f18] outline-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
             type="number"
             name="number"
             id="number"
@@ -120,13 +120,13 @@ const CheckOutForm = ({ donate, setShowModal }) => {
           />
           <div className="mt-8">
             <CardElement
-              className="border p-4 w-full  border-[#ef6f18] rounded-lg"
+              className="border p-4 w-full  border-[#ef6f18] rounded-lg text-gray-700"
               options={{
                 style: {
                   base: {
                     fontSize: "16px",
 
-                    color: "black",
+                    color: "#ef6f18",
                     "::placeholder": {
                       color: "#ef6f18",
                     },

@@ -8,16 +8,16 @@ import { FaUserAstronaut } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
 
 const DashBoardLayout = () => {
-  const { user } = useAuth();
+  const { user , darkMode} = useAuth();
 
   const [isAdmin] = useAdmin();
 
   // const isAdmin = true;
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className={`max-w-screen-xl mx-auto ${darkMode? 'dark:bg-[#1e293b] text-white':''}`}>
       <Navbar></Navbar>
       <div className="md:flex mt-1 gap-4 p-5 md:p-0 ">
-        <div className="md:w-64 mx-auto bg-[#ffff] rounded-lg shadow-lg ">
+        <div className="md:w-64 mx-auto  rounded-lg shadow-lg ">
           <div className="text-center mt-3 ">
             <img
               className="size-16 inline rounded-full border border-red-400 mt-2"

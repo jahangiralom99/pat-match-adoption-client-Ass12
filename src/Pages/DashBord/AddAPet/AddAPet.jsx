@@ -90,7 +90,7 @@ const AddAPet = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%] ">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Pet name
               </label>
               <input
@@ -105,7 +105,7 @@ const AddAPet = () => {
               {errors.name && <p className="text-red-600">Name is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Pet Photo
               </label>
               <input
@@ -122,7 +122,7 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Pet Bio
               </label>
               <input
@@ -139,11 +139,11 @@ const AddAPet = () => {
             </div>
             <div className="mt-4 flex-[50%]">
               <div className="">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
+                <label className="block  text-sm font-bold mb-2">
                   Category
                 </label>
                 <Select
-                  className="px-4 border-[#ef6f18]"
+                  className="px-4 text-black border-[#ef6f18]"
                   defaultValue={selectedOption}
                   onChange={setSelectedOption}
                   options={options}
@@ -153,7 +153,7 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Age
               </label>
               <input
@@ -167,7 +167,7 @@ const AddAPet = () => {
               {errors.age && <p className="text-red-600">age is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Location
               </label>
               <input
@@ -185,7 +185,7 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Description
               </label>
               <input
@@ -201,7 +201,7 @@ const AddAPet = () => {
               )}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Color
               </label>
               <input
@@ -219,7 +219,7 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Size
               </label>
               <input
@@ -233,7 +233,7 @@ const AddAPet = () => {
               {errors.size && <p className="text-red-600">size is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Date
               </label>
               <input
@@ -247,12 +247,12 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Gender
               </label>
               <div className="">
                 <Select
-                  className="px-4 border-[#ef6f18]"
+                  className="px-4 border-[#ef6f18] text-black"
                   defaultValue={isGander}
                   onChange={setIsGander}
                   options={gander}
@@ -260,11 +260,11 @@ const AddAPet = () => {
               </div>
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2">
                 Vaccinated
               </label>
               <Select
-                className="px-4 border-[#ef6f18]"
+                className="px-4 border-[#ef6f18] text-black"
                 defaultValue={isVaccinated}
                 onChange={setIsVaccinated}
                 options={vaccinated}

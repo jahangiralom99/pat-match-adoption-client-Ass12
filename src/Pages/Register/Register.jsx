@@ -30,11 +30,11 @@ const Register = () => {
       headers: { "Content-Type": "multipart/form-data" },
     });
     if (res.data.success) {
-      const url = res.data?.data?.display_url
+      const url = res.data?.data?.display_url;
       try {
         await createUser(data.email, data.password);
 
-        await updateName(data.name,url);
+        await updateName(data.name, url);
         const userInfo = {
           email: data.email,
           name: data.name,
@@ -67,20 +67,18 @@ const Register = () => {
   // console.log(user);
   return (
     <div className="py-16">
-      <div className="flex flex-row-reverse bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl gap-5">
+      <div className="flex flex-row-reverse rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl gap-5">
         <div className="hidden lg:block lg:w-1/2 bg-cover">
           <img src="https://i.postimg.cc/RC8q2kNf/login.jpg" alt="" />
         </div>
         <div className="w-full p-8 lg:w-1/2">
-          <h2 className="text-3xl font-bold text-[#ef6f18] text-center">
+          <h2 className="text-3xl font-bold text-center">
             Please Register !
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Your name
-              </label>
+              <label className="block text-sm font-bold mb-2">Your name</label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
@@ -93,7 +91,7 @@ const Register = () => {
               {errors.name && <p className="text-red-600">Name is Required</p>}
             </div>
             <div className="mt-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Your Photo
               </label>
               <input
@@ -108,7 +106,7 @@ const Register = () => {
               )}
             </div>
             <div className="mt-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Email Address
               </label>
               <input
@@ -126,10 +124,8 @@ const Register = () => {
             </div>
             <div className="mt-4">
               <div className="flex justify-between">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
-                  Password
-                </label>
-                <a href="#" className="text-xs text-gray-500">
+                <label className="block text-sm font-bold mb-2">Password</label>
+                <a href="#" className="text-xs">
                   Forget Password?
                 </a>
               </div>
@@ -185,7 +181,7 @@ const Register = () => {
             <span className="border-b w-1/5 md:w-1/4"></span>
             <Link
               to="/login"
-              className="text-xs text-gray-500 uppercase text-center"
+              className="text-xs uppercase text-center"
             >
               all ready have account ? please{" "}
               <span className="font-bold border p-2 hover:rounded-full hover:bg-[#ef6f18] hover:text-white text-[#ef6f18]">
@@ -194,7 +190,7 @@ const Register = () => {
             </Link>
             <span className="border-b w-1/5 md:w-1/4"></span>
           </div>
-          <p className="text-xs text-center text-gray-500 uppercase  mt-5">
+          <p className="text-xs text-center  uppercase  mt-5">
             or login with Google
           </p>
 

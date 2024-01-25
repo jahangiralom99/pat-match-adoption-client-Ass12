@@ -1,5 +1,4 @@
-import { FaEdit } from "react-icons/fa";
-import { MdOutlineAddBox, MdOutlineDeleteOutline } from "react-icons/md";
+import { FaEdit, FaRegPauseCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
@@ -7,19 +6,18 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../Components/Common/Loader";
 
 const MyDonationCampaigns = () => {
-
   const { user } = useAuth();
   const axios = useAxiosPublic();
 
   // const data = [];
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["all-pets", user?.email],
     queryFn: async () => {
       const res = await axios.get(`/all-donate-pets?email=${user?.email}`);
       return res.data;
     },
   });
-    console.log(data);
+  console.log(data);
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -46,17 +44,17 @@ const MyDonationCampaigns = () => {
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet image
+                    Pet Name
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet name
+                    Maximum donation amount
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
                   <p className="text-sm text-blue-gray-900  font-semibold leading-none opacity-70">
-                    Pet Category
+                    donation progress
                   </p>
                 </th>
                 <th className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
@@ -83,7 +81,7 @@ const MyDonationCampaigns = () => {
                     <td className="p-4 border-b border-blue-gray-50">
                       <div>
                         <img
-                          src={table.image}
+                          src={table.name}
                           alt="John Michael"
                           className="inline-block relative object-cover object-center !rounded-full w-9 h-9"
                         />
@@ -110,25 +108,17 @@ const MyDonationCampaigns = () => {
                     </td>
                     <td className="p-4 border-b border-blue-gray-50 flex gap-3">
                       <div>
-                        <Link to={`/dashboard/pet-update/${table._id}`}>
-                          <button className="p-2 border bg-red-500 rounded-lg hover:bg-red-700">
-                            <FaEdit className="text-2xl text-white" />
+                        <Link to={`/dashboard/donation-update/${table._id}`}>
+                          <button className="p-1 border bg-red-500 rounded-lg hover:bg-red-700">
+                            <FaEdit className="text-xl text-white" />
                           </button>
                         </Link>
                       </div>
                       <div>
-                        <button
-                          className="p-2 border bg-red-500 rounded-lg hover:bg-red-700"
-                        >
-                          <MdOutlineDeleteOutline className="text-2xl text-white" />
+                        <button className="flex gap-2 justify-center items-center border bg-[#ef6f18] hover:bg-[#934511] rounded-lg p-1 text-white ">
+                          <FaRegPauseCircle className="text-xl " />
+                          Pause
                         </button>
-                      </div>
-                      <div>
-                        {!table?.adopted ?<button
-                          className="flex gap-2 justify-center items-center border bg-[#ef6f18] hover:bg-[#934511] rounded-lg p-2 text-white "
-                        >
-                          <MdOutlineAddBox className="text-xl " />Add Adopted
-                        </button> : <button className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed opacity-50">Adopted</button>}
                       </div>
                     </td>
                   </tr>

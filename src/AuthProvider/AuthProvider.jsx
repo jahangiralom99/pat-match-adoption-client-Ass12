@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
     const [loader, setLoader] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const axios = useAxiosPublic();
+    const [darkMode, setDarkMode] = useState(false);
 
 
 
@@ -76,7 +77,9 @@ const AuthProvider = ({ children }) => {
         login,
         logOut,
         googleLogin,
-        updateName
+        updateName,
+        setDarkMode,
+        darkMode
     }
 
     return (

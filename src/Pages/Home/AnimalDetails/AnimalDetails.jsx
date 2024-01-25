@@ -13,7 +13,7 @@ import DetailsSideBar from "../../../Components/Common/DetailsSideBar";
 const AnimalDetails = () => {
   const axios = useAxiosPublic();
   const [showModal, setShowModal] = useState(false);
-  const { user } = useAuth();
+  const { user, darkMode } = useAuth();
 
   const { id } = useParams();
 
@@ -74,10 +74,10 @@ const AnimalDetails = () => {
   };
 
   return (
-    <section className="max-w-screen-xl mx-auto">
+    <section className={`max-w-screen-xl mx-auto `}>
       <TopBar></TopBar>
       <div className="md:flex gap-6">
-        <div className="bg-[#ffff] p-5 px-6 rounded-lg shadow-lg md:w-[70%] space-y-6">
+        <div className={`${darkMode ? "bg-[#1e293b] text-white" : "bg-white"} p-5 px-6 rounded-lg shadow-lg md:w-[70%] space-y-6`}>
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}
             About {name}{" "}
@@ -142,7 +142,7 @@ const AnimalDetails = () => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[999] outline-none focus:outline-none ">
             <div className="relative w-auto md:w-[500px] my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${darkMode && "bg-[#1e293b]"} bg-white outline-none focus:outline-none`}>
                 {/*header*/}
                 <div className="flex items-start justify-between p-10 border-b border-solid border-blueGray-200 rounded-t ">
                   <h3 className="text-3xl font-semibold border-l-4 border-[#ef6f18]">
@@ -161,7 +161,7 @@ const AnimalDetails = () => {
                     <div>
                       <p className="font-bold">Phone Number </p>
                       <input
-                        className="border border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] outline-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                        className="border text-black border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] outline-none [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                         type="number"
                         name="number"
                         id="number"
@@ -171,10 +171,10 @@ const AnimalDetails = () => {
                     <div className="mt-6">
                       <p className="font-bold">Your Address</p>
                       <input
-                        className="border border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] outline-none"
+                        className="border border-red-400 py-3 px-6 w-96 rounded-md mt-3 placeholder-[#ef6f18] text-black outline-none"
                         type="text"
                         name="address"
-                        id="address"
+                        id="address" required
                         placeholder="Enter Your Address"
                       />
                     </div>

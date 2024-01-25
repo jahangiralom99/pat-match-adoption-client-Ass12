@@ -5,8 +5,10 @@ import { FaRegCalendarAlt, FaTransgender } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Button from "../Common/Button";
 import Loader from "../Common/Loader";
+import useAuth from "../../Hooks/useAuth";
 
-const AnimalCard = ({ animal ,isLoading}) => {
+const AnimalCard = ({ animal, isLoading }) => {
+  const { darkMode } = useAuth();
   const { category, name, location, gender, image, _id } = animal || {};
 
   return (
@@ -18,7 +20,7 @@ const AnimalCard = ({ animal ,isLoading}) => {
             src={image}
             alt="Dogs"
           />
-          <div className="relative -top-12 h-[150px] z-50 w-80 mx-auto bg-slate-100 rounded-lg p-4">
+          <div className={`${darkMode && 'dark:bg-[#1e293b]'} relative -top-12 h-[150px] z-50 w-80 mx-auto bg-slate-100 rounded-lg p-4`}>
             <h1 className="font-bold text-2xl text-center text-[#ef6f18]">
               {name}
             </h1>

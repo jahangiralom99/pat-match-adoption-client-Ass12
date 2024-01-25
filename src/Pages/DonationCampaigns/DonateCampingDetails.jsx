@@ -10,6 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import DetailsSideBar from "../../Components/Common/DetailsSideBar";
+import useAuth from "../../Hooks/useAuth";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
@@ -17,6 +18,7 @@ const DonateCampingDetails = () => {
   const { id } = useParams();
   const axios = useAxiosPublic();
   const [showModal, setShowModal] = useState(false);
+  const { darkMode } = useAuth();
   
 
   const { data: donate } = useQuery({
@@ -50,7 +52,7 @@ const DonateCampingDetails = () => {
     <section className="max-w-screen-xl mx-auto">
       <TopBar></TopBar>
       <div className="md:flex gap-6">
-        <div className="bg-[#f7f4f4] p-5  rounded-lg shadow-lg md:w-[70%] space-y-6">
+        <div className={`p-5  rounded-lg shadow-lg md:w-[70%] space-y-6`}>
           <h1 className="font-bold text-3xl border-l-4 border-[#ef6f18]">
             {" "}
             About {name}{" "}
@@ -130,7 +132,7 @@ const DonateCampingDetails = () => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[999] outline-none focus:outline-none ">
             <div className="relative w-auto md:w-[600px] my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${darkMode && "bg-[#1e293b]"} bg-white outline-none focus:outline-none`}>
                 {/*header*/}
                 <div className="flex items-start justify-between p-10 border-b border-solid border-blueGray-200 rounded-t ">
                   <h3 className="text-3xl font-semibold border-l-4 border-[#ef6f18]">

@@ -8,7 +8,6 @@ const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useAuth();
 
-
   const handleLogOut = async () => {
     try {
       await logOut();
@@ -45,7 +44,7 @@ const Profile = () => {
   );
 
   return (
-    <div className="text-center">
+    <div className="text-center ">
       <div className="relative inline-block text-left">
         <div className="ml-3 relative">
           <div onClick={() => setIsOpen(!isOpen)}>
@@ -55,8 +54,8 @@ const Profile = () => {
             >
               <img
                 className="h-10 w-10 rounded-full"
-                src={user?.photoURL || ""}
-                alt="User profile"
+                src={user?.photoURL || "https://i.postimg.cc/9f1bNTtB/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"}
+                alt="profile"
               />
             </button>
           </div>

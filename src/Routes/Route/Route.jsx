@@ -28,6 +28,7 @@ import UpdatePet from "../../Pages/DashBord/AdminDashboard/UpdatePet/UpdatePet";
 import UserUpdatePet from "../../Pages/DashBord/UserUpdatePet/UserUpdatePet";
 import Gallery from "../../Pages/Gallery/Gallery";
 import AboutUs from "../../Pages/AboutUs/AboutUs";
+import InspawrationStation from "../../Pages/InspawrationStation/InspawrationStation";
 
 const Route = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const Route = createBrowserRouter([
       {
         path: "aboutUs",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: "inspawration-station",
+        element: <InspawrationStation></InspawrationStation>
       },
       {
         path: "login",

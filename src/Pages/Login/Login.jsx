@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
@@ -28,7 +28,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigation(location.state? location.state : "/")
+      navigation(location.state ? location.state : "/");
 
       console.log(res);
     } catch (err) {
@@ -47,27 +47,25 @@ const Login = () => {
 
   return (
     <div className="py-16">
-      <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl">
+      <div className="flex  rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-screen-xl">
         <div className="hidden lg:block lg:w-1/2 bg-cover">
           <img src="https://i.postimg.cc/RC8q2kNf/login.jpg" alt="" />
         </div>
         <div className="w-full p-8 lg:w-1/2">
-          <h2 className="text-2xl font-semibold text-gray-700 text-center">
-            Please Login !
-          </h2>
+          <h2 className="text-2xl font-semibold text-center">Please Login !</h2>
           <div>
             <GoogleAndGithub></GoogleAndGithub>
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-4 flex items-center justify-between">
               <span className="border-b w-1/5 lg:w-1/4"></span>
-              <p className="text-xs text-center text-gray-500 uppercase">
+              <p className="text-xs text-center uppercase">
                 or login with email
               </p>
               <span className="border-b w-1/5 lg:w-1/4"></span>
             </div>
             <div className="mt-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block  text-sm font-bold mb-2">
                 Email Address
               </label>
               <input
@@ -85,10 +83,8 @@ const Login = () => {
             </div>
             <div className="mt-4">
               <div className="flex justify-between">
-                <label className="block text-gray-700 text-sm font-bold mb-2">
-                  Password
-                </label>
-                <a href="#" className="text-xs text-gray-500">
+                <label className="block text-sm font-bold mb-2">Password</label>
+                <a href="#" className="text-xs">
                   Forget Password?
                 </a>
               </div>
@@ -122,7 +118,7 @@ const Login = () => {
           </form>
           <div className="mt-4 flex items-center justify-between">
             <span className="border-b w-1/5 md:w-1/4"></span>
-            <Link to="/register" className="text-xs text-gray-500 uppercase">
+            <Link to="/register" className="text-xs  uppercase">
               or{" "}
               <span className="font-bold border p-2 hover:rounded-full hover:bg-[#ef6f18] hover:text-white text-[#ef6f18]">
                 Register

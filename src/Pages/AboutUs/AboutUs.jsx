@@ -11,7 +11,7 @@ import TopBar from "../../Components/Common/TopBar";
 
 const AboutUs = () => {
   return (
-    <section className="max-w-screen-xl mx-auto mt-4 px-4">
+    <section className={`max-w-screen-xl mx-auto mt-4 px-4`}>
       <TopBar value={"About Us"}></TopBar>
       <div className="md:flex justify-center items-center gap-10">
         <div className="space-y-2 flex-[50%] p-5 md:p-0">
@@ -23,7 +23,7 @@ const AboutUs = () => {
           </h1>
           <h2 className="text-xl font-bold">Let Us Take Care Of Your Pets!</h2>
         </div>
-        <div className="flex-[50%] space-y-6 leading-8 text-[17px] mt-10 md:mt-0">
+        <div className=" flex-[50%] space-y-6 leading-8 text-[17px] mt-10 md:mt-0">
           <p>
             🐾 Welcome to Our Trusted ----Pet Adoption---- Family with Over 10
             Years of Expertise! 🐾 At Pet Adoption, we take pride in our
@@ -49,8 +49,8 @@ const AboutUs = () => {
           <h1 className="text-3xl font-bold">Why Choose Us</h1>
           <h2 className="text-xl font-bold">Let Us Take Care Of Your Pets!</h2>
           <p>
-            Building Lifelong Connections: It s not just about finding a pet;
-            it s about building a lasting connection.
+            Building Lifelong Connections: It s not just about finding a pet; it
+            s about building a lasting connection.
           </p>
           <span className="text-right">
             <img
@@ -119,7 +119,7 @@ const AboutUs = () => {
                 Core Team
               </p>
             </div>
-            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+            <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto">
               <span className="relative inline-block">
                 <span className="relative">Welcome</span>
               </span>{" "}
