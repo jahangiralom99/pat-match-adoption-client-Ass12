@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivet from "../../../../Hooks/useAxiosPrivet";
 import Loader from "../../../../Components/Common/Loader";
-import useAuth from "../../../../Hooks/useAuth";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import Swal from "sweetalert2";
 
 const User = () => {
   const axios = useAxiosPrivet();
-  const { user } = useAuth();
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["users"],
