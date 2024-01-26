@@ -5,9 +5,7 @@ import Button from "../../Components/Common/Button";
 import TopBar from "../../Components/Common/TopBar";
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-} from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import DetailsSideBar from "../../Components/Common/DetailsSideBar";
 import useAuth from "../../Hooks/useAuth";
@@ -19,7 +17,6 @@ const DonateCampingDetails = () => {
   const axios = useAxiosPublic();
   const [showModal, setShowModal] = useState(false);
   const { darkMode } = useAuth();
-  
 
   const { data: donate } = useQuery({
     queryKey: ["donates", id, axios],
@@ -43,11 +40,10 @@ const DonateCampingDetails = () => {
     vaccinated,
     date,
     maximum_donation,
-    amount,
+    // amount,
     image,
   } = donate || {};
 
- 
   return (
     <section className="max-w-screen-xl mx-auto">
       <TopBar></TopBar>
@@ -105,10 +101,10 @@ const DonateCampingDetails = () => {
             </div>
           </div>
           <div className="flex flex-col text-center justify-center space-y-4">
-            <h3 className="text-xl font-medium">
+            {/* <h3 className="text-xl font-medium">
               Donate Amount :{" "}
               <span className="text-[#ef6f18] font-semibold">$ {amount}</span>
-            </h3>
+            </h3> */}
             <h3 className="text-xl font-medium">
               Maximum Donation :{" "}
               <span className="text-[#ef6f18] font-semibold">
@@ -116,12 +112,23 @@ const DonateCampingDetails = () => {
               </span>
             </h3>
           </div>
-          <div
-            onClick={() => setShowModal(true)}
-            className="mt-12 p-4 text-center"
-          >
-            <Button value={" Donate Now"}></Button>
-          </div>
+          {donate?.donate ? (
+            <div
+              onClick={() => setShowModal(true)}
+              className="mt-12 p-4 text-center"
+            >
+              <Button value={" Donate Now"}></Button>
+            </div>
+          ) : (
+            <div className="mt-12 p-4 text-center">
+              <button
+                className="bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed opacity-50"
+                disabled
+              >
+                Donate Paused
+              </button>{" "}
+            </div>
+          )}
         </div>
         <div>
           <DetailsSideBar></DetailsSideBar>
@@ -132,7 +139,11 @@ const DonateCampingDetails = () => {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[999] outline-none focus:outline-none ">
             <div className="relative w-auto md:w-[600px] my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${darkMode && "bg-[#1e293b]"} bg-white outline-none focus:outline-none`}>
+              <div
+                className={`border-0 rounded-lg shadow-lg relative flex flex-col w-full ${
+                  darkMode && "bg-[#1e293b]"
+                } bg-white outline-none focus:outline-none`}
+              >
                 {/*header*/}
                 <div className="flex items-start justify-between p-10 border-b border-solid border-blueGray-200 rounded-t ">
                   <h3 className="text-3xl font-semibold border-l-4 border-[#ef6f18]">

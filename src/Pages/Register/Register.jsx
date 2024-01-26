@@ -38,6 +38,7 @@ const Register = () => {
         const userInfo = {
           email: data.email,
           name: data.name,
+          photo: url,
         };
         const res = await axios.post("/users", userInfo);
         if (res.data.acknowledged) {

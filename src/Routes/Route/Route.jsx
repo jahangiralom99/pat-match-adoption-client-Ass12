@@ -29,6 +29,7 @@ import UserUpdatePet from "../../Pages/DashBord/UserUpdatePet/UserUpdatePet";
 import Gallery from "../../Pages/Gallery/Gallery";
 import AboutUs from "../../Pages/AboutUs/AboutUs";
 import InspawrationStation from "../../Pages/InspawrationStation/InspawrationStation";
+import UpdateDonations from "../../Pages/DashBord/AdminDashboard/UpdateDonations/UpdateDonations";
 
 const Route = createBrowserRouter([
   {
@@ -220,6 +221,14 @@ const Route = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllDonations />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "update-donations/:id",
+        element: (
+          <AdminRoute>
+            <UpdateDonations/>
           </AdminRoute>
         ),
       },

@@ -14,7 +14,8 @@ const DashBoardLayout = () => {
 
   // const isAdmin = true;
   return (
-    <div className={`max-w-screen-xl mx-auto ${darkMode? 'dark:bg-[#1e293b] text-white':''}`}>
+    <section className={`max-w-screen-xl mx-auto ${darkMode? 'dark:bg-[#1e293b] text-white':''}`}>
+      <div className={`max-w-screen-xl mx-auto`}>
       <Navbar></Navbar>
       <div className="md:flex mt-1 gap-4 p-5 md:p-0 ">
         <div className="md:w-64 mx-auto  rounded-lg shadow-lg ">
@@ -273,6 +274,7 @@ const DashBoardLayout = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

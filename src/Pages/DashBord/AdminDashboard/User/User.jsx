@@ -132,7 +132,7 @@ const User = () => {
                     <td className="p-4 border-b border-blue-gray-50">
                       <div>
                         <img
-                          src={user?.photoURL}
+                          src={table?.photo || 'https://i.postimg.cc/9f1bNTtB/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'}
                           alt="John Michael"
                           className="inline-block relative object-cover object-center !rounded-full w-9 h-9"
                         />

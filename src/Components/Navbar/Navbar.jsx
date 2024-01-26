@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   // PaperAirplaneIcon,
-  MoonIcon,
   SunIcon,
   Bars3Icon,
   XMarkIcon,
@@ -9,6 +8,7 @@ import {
 import { NavLink } from "react-router-dom";
 import Profile from "./Profile";
 import useAuth from "../../Hooks/useAuth";
+import { MdDarkMode } from "react-icons/md";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -136,12 +136,12 @@ const Navbar = () => {
             <div className="hidden sm:flex items-center gap-10">
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className="flex items-center gap-2 duration-700 rotate-180"
+                className="flex items-center gap-2"
               >
                 {!darkMode ? (
-                  <MoonIcon className="h-6 w-6 hover:duration-700 hover:rotate-180" />
+                  <MdDarkMode className="h-8 w-8 hover:rotate-180 hover:duration-700" />
                 ) : (
-                  <SunIcon className="h-6 w-6 hover:duration-700 hover:rotate-180" />
+                  <SunIcon className="h-8 w-8 hover:rotate-180 hover:duration-700 " />
                 )}
               </div>
               <div>
