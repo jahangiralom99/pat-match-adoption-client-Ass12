@@ -22,7 +22,7 @@ const User = () => {
     return <Loader></Loader>;
   }
 
-  const handleUpdateAdmin =(id) => {
+  const handleUpdateAdmin = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to Admin ?!",
@@ -30,8 +30,8 @@ const User = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then( async(result) => {
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axios.patch(`/users-update/${id}`);
         if (res.data.modifiedCount > 0) {
@@ -39,13 +39,12 @@ const User = () => {
           Swal.fire({
             title: "Admin!",
             text: "This User has been Admin.",
-            icon: "success"
+            icon: "success",
           });
         }
-      
       }
     });
-  }
+  };
 
   const handleDeleteUser = (id) => {
     Swal.fire({
@@ -55,8 +54,8 @@ const User = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then( async(result) => {
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axios.delete(`/users-deleted/${id}`);
         if (res?.data?.deletedCount > 0) {
@@ -64,16 +63,12 @@ const User = () => {
           Swal.fire({
             title: "Deleted !",
             text: "This User has been Deleted",
-            icon: "success"
+            icon: "success",
           });
         }
-      
       }
     });
-
-
-}
-
+  };
 
   return (
     <section className="mt-3">
@@ -132,7 +127,10 @@ const User = () => {
                     <td className="p-4 border-b border-blue-gray-50">
                       <div>
                         <img
-                          src={table?.photo || 'https://i.postimg.cc/9f1bNTtB/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg'}
+                          src={
+                            table?.photo ||
+                            "https://i.postimg.cc/9f1bNTtB/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
+                          }
                           alt="John Michael"
                           className="inline-block relative object-cover object-center !rounded-full w-9 h-9"
                         />
@@ -148,11 +146,12 @@ const User = () => {
                       {table.role ? (
                         <div className="font-bold select-none bg-green-500/20 text-green-600 p-2 text-xs rounded-md ">
                           <span className="flex justify-center items-center  gap-2 ">
-                            <MdOutlineAdminPanelSettings className="text-xl" />{" "}{table?.role}
+                            <MdOutlineAdminPanelSettings className="text-xl" />{" "}
+                            {table?.role}
                           </span>
                         </div>
                       ) : (
-                        <div onClick={()=>handleUpdateAdmin(table._id)}>
+                        <div onClick={() => handleUpdateAdmin(table._id)}>
                           <button className="flex gap-2 justify-center items-center border bg-[#ef6f18] hover:bg-[#934511] rounded-lg p-2 text-white ">
                             <MdOutlineAdminPanelSettings className="text-xl " />{" "}
                             Add To Admin
@@ -161,7 +160,7 @@ const User = () => {
                       )}
                     </td>
                     <td className="p-4 border-b border-blue-gray-50">
-                      <div onClick={()=>handleDeleteUser(table._id)}>
+                      <div onClick={() => handleDeleteUser(table._id)}>
                         <button className="p-2 border bg-red-500 rounded-lg hover:bg-red-700">
                           <MdOutlineDeleteOutline className="text-2xl text-white" />
                         </button>

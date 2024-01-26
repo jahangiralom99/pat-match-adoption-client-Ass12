@@ -30,11 +30,13 @@ import Gallery from "../../Pages/Gallery/Gallery";
 import AboutUs from "../../Pages/AboutUs/AboutUs";
 import InspawrationStation from "../../Pages/InspawrationStation/InspawrationStation";
 import UpdateDonations from "../../Pages/DashBord/AdminDashboard/UpdateDonations/UpdateDonations";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 const Route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
@@ -120,6 +122,7 @@ const Route = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    errorElement : <ErrorPage></ErrorPage>,
     element: (
       <PrivetRoute>
         <DashBoardLayout />
