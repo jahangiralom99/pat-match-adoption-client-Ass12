@@ -25,7 +25,6 @@ const useAxiosPrivet = () => {
   }, async (error) => {
     const status = error.response.status;
     if (status === 401 || status === 403) {
-      // console.log(status);
       await logOut();
       navigate('/login')
     }

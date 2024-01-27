@@ -30,7 +30,7 @@ const Login = () => {
       });
       navigation(location.state ? location.state : "/");
 
-      console.log(res);
+      // console.log(res);
     } catch (err) {
       //   console.log(err.message);
       Swal.fire({

@@ -65,9 +65,9 @@ const AnimalDetails = () => {
           icon: "success",
         });
       }
-      console.log(res.data);
+      // console.log(res.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
 
     // console.log(adoptInfo);

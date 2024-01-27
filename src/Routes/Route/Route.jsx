@@ -31,12 +31,14 @@ import AboutUs from "../../Pages/AboutUs/AboutUs";
 import InspawrationStation from "../../Pages/InspawrationStation/InspawrationStation";
 import UpdateDonations from "../../Pages/DashBord/AdminDashboard/UpdateDonations/UpdateDonations";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import UserUpdateDonationCampaigns from "../../Pages/DashBord/UserUpdateDonationCampaigns/UserUpdateDonationCampaigns";
+import DashBoardHome from "../../Pages/DashBord/DashBoardHome/DashBoardHome";
 
 const Route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -104,11 +106,11 @@ const Route = createBrowserRouter([
       },
       {
         path: "aboutUs",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "inspawration-station",
-        element: <InspawrationStation></InspawrationStation>
+        element: <InspawrationStation></InspawrationStation>,
       },
       {
         path: "login",
@@ -122,7 +124,7 @@ const Route = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    errorElement : <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     element: (
       <PrivetRoute>
         <DashBoardLayout />
@@ -132,11 +134,19 @@ const Route = createBrowserRouter([
       // normal user path to dashboard
       {
         index: true,
-        element: <></>,
+        element: (
+          <PrivetRoute>
+            <DashBoardHome />
+          </PrivetRoute>
+        ),
       },
       {
         path: "dashboard",
-        element: <></>,
+        element: (
+          <PrivetRoute>
+            <DashBoardHome />
+          </PrivetRoute>
+        ),
       },
       {
         path: "addAPet",
@@ -180,11 +190,23 @@ const Route = createBrowserRouter([
       },
       {
         path: "my-donation-campaigns",
-        element: <MyDonationCampaigns />,
+        element: (
+          <PrivetRoute>
+            <MyDonationCampaigns />
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "donation-update-user/:id",
+        element: <UserUpdateDonationCampaigns />,
       },
       {
         path: "my-donations",
-        element: <MyDonations />,
+        element: (
+          <PrivetRoute>
+            <MyDonations />
+          </PrivetRoute>
+        ),
       },
       // Admin Routes ALL
       {
@@ -231,7 +253,7 @@ const Route = createBrowserRouter([
         path: "update-donations/:id",
         element: (
           <AdminRoute>
-            <UpdateDonations/>
+            <UpdateDonations />
           </AdminRoute>
         ),
       },

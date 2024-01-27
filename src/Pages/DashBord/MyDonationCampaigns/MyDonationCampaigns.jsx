@@ -37,8 +37,7 @@ const MyDonationCampaigns = () => {
     return <Loader></Loader>;
   }
 
-
-// handlePauseBtn 
+  // handlePauseBtn
   const handlePauseBtn = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -68,7 +67,7 @@ const MyDonationCampaigns = () => {
     });
   };
 
-  // handlePauseBtn 
+  // handlePauseBtn
   const handleUnpauseBtn = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -106,6 +105,14 @@ const MyDonationCampaigns = () => {
       <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">
         Donate
       </p>
+      <div className="flex justify-end p-4">
+            <div onClick={setShowModal}>
+              <button className="flex gap-2 justify-center items-center border bg-[#ef6f18] hover:bg-[#934511] rounded-lg p-1 text-white ">
+                <FaDonate className="text-1xl " />
+                Donation History
+              </button>
+            </div>
+          </div>
       {/* table for shoe data */}
       <div>
         <div className="p-6 overflow-scroll px-0">
@@ -166,7 +173,9 @@ const MyDonationCampaigns = () => {
                     </td>
                     <td className="p-4 border-b border-blue-gray-50 flex gap-3">
                       <div>
-                        <Link to={`/dashboard/donation-update/${table._id}`}>
+                        <Link
+                          to={`/dashboard/donation-update-user/${table._id}`}
+                        >
                           <button className="p-1 border bg-red-500 rounded-lg hover:bg-red-700">
                             <FaEdit className="text-xl text-white" />
                           </button>

@@ -95,7 +95,6 @@ const UpdateDonations = () => {
         amount: data.amount,
         maximum_donation: data.maximum_donation,
       };
-      console.log(updatePetsInfo);
       const result = await axiosPrivet.patch(`/donation-update-pet/${id}`,updatePetsInfo);
       if (result.data.modifiedCount > 0) {
         reset();
@@ -105,7 +104,6 @@ const UpdateDonations = () => {
           icon: "success",
         });
       }
-      console.log(result);
     }
   };
 

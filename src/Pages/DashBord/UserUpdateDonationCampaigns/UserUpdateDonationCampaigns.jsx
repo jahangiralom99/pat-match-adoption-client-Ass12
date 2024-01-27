@@ -1,9 +1,11 @@
-import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import Select from "react-select";
-import { useState } from "react";
-import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAuth from "../../../Hooks/useAuth";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../Components/Common/Loader";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_API_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -15,6 +17,7 @@ const options = [
   { value: "cats", label: "Cats" },
   { value: "rabbit", label: "Rabbit" },
 ];
+
 const gander = [
   { value: "Male", label: "Male" },
   { value: "Female", label: "Female" },
@@ -24,14 +27,12 @@ const vaccinated = [
   { value: "false", label: "false" },
 ];
 
-const AddAPet = () => {
+const UserUpdateDonationCampaigns = () => {
   const axios = useAxiosPublic();
   const [selectedOption, setSelectedOption] = useState("");
   const [isGander, setIsGander] = useState("");
   const [isVaccinated, setIsVaccinated] = useState("");
-  const { user } = useAuth();
-
-  //   console.log(selectedOption.value, isGander.value, isVaccinated.value);
+  const { id } = useParams();
 
   const {
     register,
@@ -40,14 +41,42 @@ const AddAPet = () => {
     formState: { errors },
   } = useForm();
 
+  const { data, isLoading } = useQuery({
+    queryKey: ["update", id],
+    queryFn: async () => {
+      const res = await axios.get(`/all-donate-pets/${id}`);
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  const {
+    category,
+    name,
+    age,
+    location,
+    petBio,
+    description,
+    color,
+    size,
+    amount,
+    maximum_donation,
+  } = data || {};
+
+  // console.log(data);
+
   const onSubmit = async (data) => {
-    const imageFile = { image: data.photo[0] };
+    // console.log(data);
+    const imageFile = { image: data.image[0] };
     const res = await axios.post(image_hosting_api, imageFile, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     if (res.data.success) {
       const url = res.data?.data?.display_url;
-      const addPetsInfo = {
+      const updatePetsInfo = {
         category: selectedOption.value,
         name: data.name,
         age: data.age,
@@ -61,40 +90,42 @@ const AddAPet = () => {
         date: data.date,
         image: url,
         blog_img: url,
-        email: user?.email,
-          submitDate: new Date(),
-          adopted: false,
+        amount: data.amount,
+        maximum_donation: data.maximum_donation,
       };
-      const result = await axios.post("/add-petList-user", addPetsInfo);
-      // console.log(result);
-      if (result.data.acknowledged) {
+      console.log(updatePetsInfo);
+      const result = await axios.patch(
+        `donation-update-pet-byUser/${id}`,
+        updatePetsInfo
+      );
+      if (result.data.modifiedCount > 0) {
+        reset();
         Swal.fire({
-          title: "Pet Added !!!",
-          text: "Pet Added successfully",
+          title: "Success",
+          text: `${name} is updated successfully`,
           icon: "success",
         });
-        reset();
       }
 
-      //     console.log(addPetsInfo);
     }
   };
 
   return (
     <section className="p-3 pb-8">
       <h1 className="text-center font-bold text-2xl mt-3 border-l-4 border-[#ef6f18]">
-        Pet Add{" "}
+        Update Pet{" "}
       </h1>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%] ">
-              <label className="block text-sm font-bold mb-2">
-                Pet name
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Pet name : {name}
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={name}
                 {...register("name", { required: true })}
                 placeholder="Pet name"
                 id="name"
@@ -104,29 +135,30 @@ const AddAPet = () => {
               {errors.name && <p className="text-red-600">Name is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block  text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Pet Photo
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="file"
-                {...register("photo", { required: true })}
-                id="photo"
-                name="photo"
+                {...register("image", { required: true })}
+                id="image"
+                name="image"
               />
               {errors.photo && (
-                <p className="text-red-600">Photo is Required</p>
+                <p className="text-red-600">image is Required</p>
               )}
             </div>
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block  text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Pet Bio
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={petBio}
                 {...register("bio", { required: true })}
                 placeholder="Bio"
                 id="text"
@@ -138,12 +170,12 @@ const AddAPet = () => {
             </div>
             <div className="mt-4 flex-[50%]">
               <div className="">
-                <label className="block  text-sm font-bold mb-2">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
                   Category
                 </label>
                 <Select
-                  className="px-4 text-black border-[#ef6f18]"
-                  defaultValue={selectedOption}
+                  className="px-4 border-[#ef6f18]"
+                  defaultValue={category}
                   onChange={setSelectedOption}
                   options={options}
                 />
@@ -152,12 +184,13 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Age
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="number"
+                defaultValue={age}
                 {...register("age", { required: true })}
                 placeholder="pet age"
                 id="age"
@@ -166,12 +199,13 @@ const AddAPet = () => {
               {errors.age && <p className="text-red-600">age is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Location
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={location}
                 {...register("location", { required: true })}
                 placeholder="your location"
                 id="text"
@@ -184,12 +218,13 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Description
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={description}
                 {...register("description", { required: true })}
                 placeholder="description"
                 id="description"
@@ -200,12 +235,13 @@ const AddAPet = () => {
               )}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Color
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={color}
                 {...register("color", { required: true })}
                 placeholder="Color"
                 id="color"
@@ -218,12 +254,13 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block  text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Size
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="text"
+                defaultValue={size}
                 {...register("size", { required: true })}
                 placeholder="size"
                 id="size"
@@ -232,12 +269,13 @@ const AddAPet = () => {
               {errors.size && <p className="text-red-600">size is Required</p>}
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Date
               </label>
               <input
                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                 type="date"
+                defaultValue={data}
                 {...register("date", { required: true })}
                 id="date"
               />
@@ -246,12 +284,12 @@ const AddAPet = () => {
           </div>
           <div className="flex items-center justify-center gap-12 p-2">
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Gender
               </label>
               <div className="">
                 <Select
-                  className="px-4 border-[#ef6f18] text-black"
+                  className="px-4 border-[#ef6f18]"
                   defaultValue={isGander}
                   onChange={setIsGander}
                   options={gander}
@@ -259,15 +297,49 @@ const AddAPet = () => {
               </div>
             </div>
             <div className="mt-4 flex-[50%]">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Vaccinated
               </label>
               <Select
-                className="px-4 border-[#ef6f18] text-black"
+                className="px-4 border-[#ef6f18]"
                 defaultValue={isVaccinated}
                 onChange={setIsVaccinated}
                 options={vaccinated}
               />
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-12 p-2">
+            <div className="mt-4 flex-[50%]">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Amount
+              </label>
+              <input
+                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="number"
+                defaultValue={amount}
+                {...register("amount", { required: true })}
+                placeholder="amount"
+                id="age"
+                autoComplete="number"
+              />
+              {errors.age && <p className="text-red-600">amount is Required</p>}
+            </div>
+            <div className="mt-4 flex-[50%]">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                maximum_donation
+              </label>
+              <input
+                className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                type="number"
+                defaultValue={maximum_donation}
+                {...register("maximum_donation", { required: true })}
+                placeholder="maximum donation"
+                id="maximum_donation"
+                autoComplete="number"
+              />
+              {errors.location && (
+                <p className="text-red-600">Maximum Donation is Required</p>
+              )}
             </div>
           </div>
 
@@ -276,7 +348,7 @@ const AddAPet = () => {
               type="submit"
               className=" text-white bg-[#ef6f18] rounded-lg font-bold py-2 px-4 w-full hover:bg-gray-600"
             >
-              Add Pet
+              Update Now
             </button>
           </div>
         </form>
@@ -285,4 +357,4 @@ const AddAPet = () => {
   );
 };
 
-export default AddAPet;
+export default UserUpdateDonationCampaigns;

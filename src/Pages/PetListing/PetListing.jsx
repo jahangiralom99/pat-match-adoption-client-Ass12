@@ -37,7 +37,7 @@ const PetListing = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target.search.value);
+    // console.log(e.target.search.value);
     setTextField(e.target.search.value);
   };
   return (

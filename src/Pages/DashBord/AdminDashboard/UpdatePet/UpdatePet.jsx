@@ -80,7 +80,7 @@ const UpdatePet = () => {
         image: url,
         blog_img: url,
       };
-      console.log(updatePetsInfo);
+      // console.log(updatePetsInfo);
       const result = await axiosPrivet.patch(
         `/update-pet/${id}`,
         updatePetsInfo
@@ -92,7 +92,7 @@ const UpdatePet = () => {
           icon: "success"
         });
       }
-      console.log(result);
+      // console.log(result);
     }
   };
 

@@ -25,7 +25,6 @@ const MyAddedPet = () => {
     return <Loader></Loader>;
   }
 
-  console.log(data);
 
   const handleAdoptedBtn = (table) => {
     Swal.fire({

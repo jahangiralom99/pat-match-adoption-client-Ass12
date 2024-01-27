@@ -102,7 +102,6 @@ const Navbar = () => {
       </li>
     </>
   );
-  // console.log(user);
 
   return (
     <nav

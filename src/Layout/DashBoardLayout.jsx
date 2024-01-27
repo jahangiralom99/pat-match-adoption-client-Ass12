@@ -17,8 +17,8 @@ const DashBoardLayout = () => {
     <section className={`max-w-screen-xl mx-auto ${darkMode? 'dark:bg-[#1e293b] text-white':''}`}>
       <div className={`max-w-screen-xl mx-auto`}>
       <Navbar></Navbar>
-      <div className="md:flex mt-1 gap-4 p-5 md:p-0 ">
-        <div className="md:w-64 mx-auto  rounded-lg shadow-lg ">
+      <div className="md:flex mt-1 gap-4 p-5 md:p-0 mb-12">
+        <div className="md:w-64 mx-auto  rounded-lg shadow-lg pb-7">
           <div className="text-center mt-3 ">
             <img
               className="size-16 inline rounded-full border border-red-400 mt-2"
@@ -56,7 +56,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -71,7 +71,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -87,7 +87,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -102,7 +102,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -117,7 +117,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -132,7 +132,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -147,7 +147,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -162,7 +162,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -182,7 +182,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -197,7 +197,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -212,7 +212,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -227,7 +227,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -242,7 +242,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >
@@ -257,7 +257,7 @@ const DashBoardLayout = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "active border-l-4 border-[#ef6f18] font-bold"
+                    ? "active border-l-4 border-[#ef6f18] font-bold text-white"
                     : ""
                 }
               >

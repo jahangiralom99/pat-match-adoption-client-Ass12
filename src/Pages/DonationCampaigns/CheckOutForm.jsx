@@ -48,7 +48,6 @@ const CheckOutForm = ({ donate, setShowModal }) => {
     });
 
     if (error) {
-      console.log(error.message);
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -57,7 +56,7 @@ const CheckOutForm = ({ donate, setShowModal }) => {
       setErrorMessage(error.message);
     } else {
       setErrorMessage("");
-      console.log(paymentMethod);
+      // console.log(paymentMethod);
     }
 
     //   confirm payment method
@@ -75,9 +74,7 @@ const CheckOutForm = ({ donate, setShowModal }) => {
     );
     if (errMsg) {
       setErrorMessage(errMsg.massage);
-      console.log(errMsg.massage);
     } else {
-      console.log(paymentIntent);
       if (paymentIntent.status === "succeeded") {
         const paymentInfo = {
           name: user?.displayName || "NO name",

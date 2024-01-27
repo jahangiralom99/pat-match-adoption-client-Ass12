@@ -32,7 +32,6 @@ const GoogleAndGithub = () => {
        
       });
     } catch (err) {
-      console.log(err);
       Swal.fire({
         position: "top",
         icon: "error",
