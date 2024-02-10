@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Loader from "../../Components/Common/Loader";
 import DonationCampingCard from "../../Components/DonationCampingCard/DonationCampingCard";
+import ScrollToTop from "react-scroll-to-top";
 
 const DonationCampaigns = () => {
   const axios = useAxiosPublic();
@@ -20,6 +21,11 @@ const DonationCampaigns = () => {
 
   return (
     <section className="mt-6 max-w-screen-xl mx-auto">
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
         Donation Campaigns section
       </h1>

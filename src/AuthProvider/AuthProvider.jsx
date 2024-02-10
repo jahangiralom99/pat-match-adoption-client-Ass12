@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
 import PropTypes from 'prop-types';
@@ -9,16 +9,18 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
     const googleProvider = new GoogleAuthProvider();
+    const gitHubprovider = new GithubAuthProvider();
     const axios = useAxiosPublic();
     const [darkMode, setDarkMode] = useState(false);
 
 
 
      // create Users
-     const createUser = (email, password) => {
+    const createUser = (email, password) => {
         setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
-    }
+    };
+
 
     // login users
     const login = (email, password) => {
@@ -36,6 +38,12 @@ const AuthProvider = ({ children }) => {
     const googleLogin = () => {
         setLoader(true);
         return signInWithPopup(auth, googleProvider);
+    }
+
+    // git hub Login
+    const gitHubLogIn = () => {
+        setLoader(true);
+        return signInWithPopup(auth, gitHubprovider)
     }
 
       // update profile 
@@ -79,7 +87,8 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         updateName,
         setDarkMode,
-        darkMode
+        darkMode,
+        gitHubLogIn
     }
 
     return (

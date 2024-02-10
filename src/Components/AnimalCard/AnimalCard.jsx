@@ -16,11 +16,15 @@ const AnimalCard = ({ animal, isLoading }) => {
       <div className="group rounded-md bg-cover bg-center bg-no-repeat max-w-sm flex justify-center items-center mx-auto relative">
         <div className=" group-hover:opacity-40 hover:bg-opacity-60 ">
           <img
-            className=" bg-[#f4f1e9] md:w-96 md:h-80 w-full hover:bg-opacity-35 hover:shadow-xl shadow-xl"
+            className=" bg-[#f4f1e9] md:w-96 md:h-80 w-full hover:bg-opacity-35 hover:shadow-xl shadow-xl hover:scale-110 transition duration-1000 delay-200"
             src={image}
             alt="Dogs"
           />
-          <div className={`${darkMode && 'dark:bg-[#1e293b]'} relative -top-12 h-[150px] z-50 w-80 mx-auto bg-slate-100 rounded-lg p-4`}>
+          <div
+            className={`${
+              darkMode && "dark:bg-[#1e293b]"
+            } relative -top-12 h-[150px] z-50 w-80 mx-auto bg-slate-100 rounded-lg p-4`}
+          >
             <h1 className="font-bold text-2xl text-center text-[#ef6f18]">
               {name}
             </h1>
@@ -44,7 +48,7 @@ const AnimalCard = ({ animal, isLoading }) => {
         </div>
         <div className="absolute opacity-0 group-hover:opacity-80">
           <div className="pt-8 text-center">
-                      <Link to={`/animals/${_id}`} className="">
+            <Link to={`/animals/${_id}`} className="">
               <Button value={"details"}></Button>
               {/* <button className="text-center bg-[#ef6f18] rounded-full p-4 hover:bg-[#c85b13] font-bold text-lg">
               <Button value={"details"}></Button>

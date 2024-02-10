@@ -5,6 +5,7 @@ import Select from "react-select";
 import { useState } from "react";
 import Button from "../../Components/Common/Button";
 import AnimalCard from "../../Components/AnimalCard/AnimalCard";
+import ScrollToTop from "react-scroll-to-top";
 
 const options = [
   { value: "", label: "Options" },
@@ -42,7 +43,11 @@ const PetListing = () => {
   };
   return (
     <section className="max-w-screen-xl mx-auto">
-      
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <form onSubmit={handleChange} className="flex justify-end mt-8 px-5">
         <div>
           <input
@@ -66,7 +71,9 @@ const PetListing = () => {
       <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
         Pets Listing section
       </h1>
-      <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">Ours Pets</p>
+      <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">
+        Ours Pets
+      </p>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 px-3">
         {animals.map((animal) => (
           <AnimalCard

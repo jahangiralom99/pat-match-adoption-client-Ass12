@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import Profile from "./Profile";
 import useAuth from "../../Hooks/useAuth";
 import { MdDarkMode } from "react-icons/md";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -100,6 +101,25 @@ const Navbar = () => {
           About Us
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "font-bold text-[#52c1c0]" : ""
+          }
+        >
+          <div className=" flex justify-center items-center">
+            <div className="relative ">
+              <div className="t-0 absolute left-3">
+                <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                  0
+                </p>
+              </div>
+              <FaCartShopping className="text-2xl" />
+            </div>
+          </div>
+        </NavLink>
+      </li>
     </>
   );
 
@@ -112,7 +132,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}
-          <div className="flex items-center gap-16 my-8">
+          <div className="flex items-center gap-16 my-6">
             {/* logo */}
             <div>
               <a
@@ -174,10 +194,10 @@ const Navbar = () => {
         }`}
       >
         <div className="px-8">
-          <div className="flex flex-col gap-8 font-bold tracking-wider list-none">
+          <div className="flex flex-col  gap-8 font-bold tracking-wider list-none">
             {navLinks}
           </div>
-          <div className="mt-6">
+          <div className="mt-6 flex justify-end">
             <Profile></Profile>
           </div>
         </div>

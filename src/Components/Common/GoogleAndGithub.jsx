@@ -8,7 +8,7 @@ const GoogleAndGithub = () => {
   const location = useLocation();
   const axios = useAxiosPublic();
 
-  const { googleLogin } = useAuth();
+  const { googleLogin, gitHubLogIn, user } = useAuth();
 
   const handleGoogleLogIn = async () => {
     try {
@@ -17,19 +17,48 @@ const GoogleAndGithub = () => {
           email: result.user.email,
           name: result.user.displayName,
         };
-        axios.post("/users", userInfo)
-          .then(res => {
-            console.log(res);
-            Swal.fire({
-              position: "top",
-              icon: "success",
-              title: "Google logged in successfully",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigation(location.state ? location.state : "/");
-        })
-       
+        axios.post("/users", userInfo).then((res) => {
+          console.log(res);
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Google logged in successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigation(location.state ? location.state : "/");
+        });
+      });
+    } catch (err) {
+      Swal.fire({
+        position: "top",
+        icon: "error",
+        title: `${err.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  console.log(user);
+  const handleGitHubLogIn = async () => {
+    try {
+      await gitHubLogIn().then((result) => {
+        const userInfo = {
+          email: result.user.email,
+          name: result.user.displayName,
+        };
+        axios.post("/users", userInfo).then((res) => {
+          console.log(res);
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Google logged in successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigation(location.state ? location.state : "/");
+        });
       });
     } catch (err) {
       Swal.fire({
@@ -72,7 +101,10 @@ const GoogleAndGithub = () => {
           Sign in with Google
         </h1>
       </div>
-      <div className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+      <div
+        onClick={handleGitHubLogIn}
+        className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+      >
         <div className="px-4 py-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
