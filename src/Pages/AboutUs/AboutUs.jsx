@@ -8,10 +8,16 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 import TopBar from "../../Components/Common/TopBar";
+import ScrollToTop from "react-scroll-to-top";
 
 const AboutUs = () => {
   return (
     <section className={`max-w-screen-xl mx-auto mt-4 px-4`}>
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <TopBar value={"About Us"}></TopBar>
       <div className="md:flex justify-center items-center gap-10">
         <div className="space-y-2 flex-[50%] p-5 md:p-0">

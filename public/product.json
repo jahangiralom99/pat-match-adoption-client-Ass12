@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "images": [
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/2.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/3.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/13.1_3dd88266-d4c8-4e6c-b070-74746f671b26.jpg?v=1590736434"
+    ],
+    "name": "Norwegian Forest Cat",
+    "description": "Calf-length dress in airy, textured cotton fabric with a printed pattern Sed hendrerit. Cras risus ipsum, faucibus ut, ullamcorper id, varius estibulum ante ipsum primis in faucibus Product Details Inspired by traditional blockprinting techniques in India, our own in-house design is the vibrant pattern that every closet needs. That's why",
+    "price": 29.99,
+    "size": "Medium",
+    "review": 4.2,
+    "color": "Brown"
+  },
+  {
+    "id": 2,
+    "images": [
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/2.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/3.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/13.1_3dd88266-d4c8-4e6c-b070-74746f671b26.jpg?v=1590736434"
+    ],
+    "name": "Norwegian Forest Cat",
+    "description": "Calf-length dress in airy, textured cotton fabric with a printed pattern Sed hendrerit. Cras risus ipsum, faucibus ut, ullamcorper id, varius estibulum ante ipsum primis in faucibus Product Details Inspired by traditional blockprinting techniques in India, our own in-house design is the vibrant pattern that every closet needs. That's why",
+    "price": 29.99,
+    "size": "Medium",
+    "review": 4.2,
+    "color": "Brown"
+  },
+  {
+    "id": 3,
+    "images": [
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/2.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/3.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/13.1_3dd88266-d4c8-4e6c-b070-74746f671b26.jpg?v=1590736434"
+    ],
+    "name": "Norwegian Forest Cat",
+    "description": "Calf-length dress in airy, textured cotton fabric with a printed pattern Sed hendrerit. Cras risus ipsum, faucibus ut, ullamcorper id, varius estibulum ante ipsum primis in faucibus Product Details Inspired by traditional blockprinting techniques in India, our own in-house design is the vibrant pattern that every closet needs. That's why",
+    "price": 29.99,
+    "size": "Medium",
+    "review": 4.2,
+    "color": "Brown"
+  },
+  {
+    "id": 4,
+    "images": [
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/2.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/3.jpg?v=1590736434",
+      "https://petiza-store-demo.myshopify.com/cdn/shop/products/13.1_3dd88266-d4c8-4e6c-b070-74746f671b26.jpg?v=1590736434"
+    ],
+    "name": "Norwegian Forest Cat",
+    "description": "Calf-length dress in airy, textured cotton fabric with a printed pattern Sed hendrerit. Cras risus ipsum, faucibus ut, ullamcorper id, varius estibulum ante ipsum primis in faucibus Product Details Inspired by traditional blockprinting techniques in India, our own in-house design is the vibrant pattern that every closet needs. That's why",
+    "price": 29.99,
+    "size": "Medium",
+    "review": 4.2,
+    "color": "Brown"
+  }
+]

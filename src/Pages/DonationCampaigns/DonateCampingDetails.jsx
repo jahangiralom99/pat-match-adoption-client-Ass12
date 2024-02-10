@@ -9,6 +9,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import DetailsSideBar from "../../Components/Common/DetailsSideBar";
 import useAuth from "../../Hooks/useAuth";
+import ScrollToTop from "react-scroll-to-top";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
@@ -46,6 +47,11 @@ const DonateCampingDetails = () => {
 
   return (
     <section className="max-w-screen-xl mx-auto">
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <TopBar></TopBar>
       <div className="md:flex gap-6">
         <div className={`p-5  rounded-lg shadow-lg md:w-[70%] space-y-6`}>

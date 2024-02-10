@@ -1,3 +1,5 @@
+import AllProduct from "./AllProduct";
+
 const NewProduct = () => {
   return (
     <div className="mt-10">
@@ -20,7 +22,7 @@ const NewProduct = () => {
           </div>
           <div className="space-y-6 z-10 text-black font-SofiaPro">
             <p>NATURE DEAL OF THE DAY</p>
-            <h1 className="font-light text-5xl">
+            <h1 className="font-light text-5xl border border-red-600 p-3">
               Buy now to get the best price
             </h1>
             <div className="flex items-center justify-center ">
@@ -34,7 +36,7 @@ const NewProduct = () => {
       </div>
       <div>
               <h1 className="text-center text-4xl font-semibold">New Product Here</h1>
-               
+              <AllProduct/>
       </div>
     </div>
   );

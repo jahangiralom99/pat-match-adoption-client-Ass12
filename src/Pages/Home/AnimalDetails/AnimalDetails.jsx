@@ -8,6 +8,7 @@ import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import DetailsSideBar from "../../../Components/Common/DetailsSideBar";
+import ScrollToTop from "react-scroll-to-top";
 
 
 const AnimalDetails = () => {
@@ -75,6 +76,11 @@ const AnimalDetails = () => {
 
   return (
     <section className={`max-w-screen-xl mx-auto `}>
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <TopBar></TopBar>
       <div className="md:flex gap-6">
         <div className={`${darkMode ? "bg-[#1e293b] text-white" : "bg-white"} p-5 px-6 rounded-lg shadow-lg md:w-[70%] space-y-6`}>

@@ -33,6 +33,7 @@ import UpdateDonations from "../../Pages/DashBord/AdminDashboard/UpdateDonations
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import UserUpdateDonationCampaigns from "../../Pages/DashBord/UserUpdateDonationCampaigns/UserUpdateDonationCampaigns";
 import DashBoardHome from "../../Pages/DashBord/DashBoardHome/DashBoardHome";
+import ProductDetails from "../../Pages/Home/NewProduct/ProductDetails";
 
 const Route = createBrowserRouter([
   {
@@ -111,6 +112,14 @@ const Route = createBrowserRouter([
       {
         path: "inspawration-station",
         element: <InspawrationStation></InspawrationStation>,
+      },
+      {
+        path: "cart",
+        element: <>cart</>,
+      },
+      {
+        path: "details/:id",
+        element: <ProductDetails />
       },
       {
         path: "login",

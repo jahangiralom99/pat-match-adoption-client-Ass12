@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Loader from "../../Components/Common/Loader";
 import TopBar from "../../Components/Common/TopBar";
+import ScrollToTop from "react-scroll-to-top";
 
 const Gallery = () => {
   const axios = useAxiosPublic();
@@ -20,6 +21,11 @@ const Gallery = () => {
 
   return (
     <section className="max-w-screen-xl mx-auto">
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <TopBar value={"gallery"} />
       <h1 className="text-center -mt-4 text-4xl font-semibold  border-l-4 border-[#ef6f18]">
         Our Pet Gallery

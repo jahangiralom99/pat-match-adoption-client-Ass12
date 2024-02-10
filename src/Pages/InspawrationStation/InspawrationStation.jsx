@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
 import TopBar from "../../Components/Common/TopBar";
+import ScrollToTop from "react-scroll-to-top";
 
 const InspawrationStation = () => {
   return (
-    <section className="max-w-screen-xl mx-auto mt-4">
+    <section className="max-w-screen-xl mx-auto mt-4 ">
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000"
+        color="#ef6f18"
+        smooth
+      />
       <TopBar value={"Inspire A Pet Station"}></TopBar>
-      <div className="max-w-screen-lg mx-auto space-y-10">
+      <div className="max-w-screen-lg mx-auto space-y-10 px-4">
         <h1 className="text-4xl font-bold">
           8 Great Reasons Why You Should Consider Adopting a Pet
         </h1>
