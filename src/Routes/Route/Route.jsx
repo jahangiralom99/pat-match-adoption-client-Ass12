@@ -34,6 +34,7 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import UserUpdateDonationCampaigns from "../../Pages/DashBord/UserUpdateDonationCampaigns/UserUpdateDonationCampaigns";
 import DashBoardHome from "../../Pages/DashBord/DashBoardHome/DashBoardHome";
 import ProductDetails from "../../Pages/Home/NewProduct/ProductDetails";
+import Cart from "../../Pages/Cart/Cart";
 
 const Route = createBrowserRouter([
   {
@@ -115,7 +116,7 @@ const Route = createBrowserRouter([
       },
       {
         path: "cart",
-        element: <>cart</>,
+        element: <PrivetRoute><Cart/></PrivetRoute>,
       },
       {
         path: "details/:id",

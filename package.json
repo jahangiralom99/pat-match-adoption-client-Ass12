@@ -30,6 +30,8 @@
     "react-scroll-to-top": "^3.0.0",
     "react-select": "^5.8.0",
     "react-spinners": "^0.13.8",
+    "react-tabs": "^6.0.2",
+    "react-toastify": "^10.0.4",
     "react-tooltip": "^5.26.0",
     "react-top-loading-bar": "^2.3.1",
     "reoverlay": "^1.0.3",

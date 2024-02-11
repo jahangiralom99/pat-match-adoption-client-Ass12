@@ -10,10 +10,14 @@ import Profile from "./Profile";
 import useAuth from "../../Hooks/useAuth";
 import { MdDarkMode } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(true);
   const { darkMode, setDarkMode } = useAuth();
+  const [cartData, ] = useCart();
+
+ 
 
   const navLinks = (
     <>
@@ -112,7 +116,7 @@ const Navbar = () => {
             <div className="relative ">
               <div className="t-0 absolute left-3">
                 <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
-                  0
+                  {cartData?.length}
                 </p>
               </div>
               <FaCartShopping className="text-2xl" />

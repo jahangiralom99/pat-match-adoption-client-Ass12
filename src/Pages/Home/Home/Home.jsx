@@ -1,3 +1,4 @@
+
 import Banner from "../Banner/Banner";
 import CategorySection from "../CategorySection/CategorySection";
 import FaqQuestion from "../FaqQuestion/FaqQuestion";
@@ -12,6 +13,7 @@ const Home = () => {
       <NewProduct />
       <FaqQuestion />
       <Testimonials />
+     
     </div>
   );
 };

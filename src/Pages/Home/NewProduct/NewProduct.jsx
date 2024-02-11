@@ -35,8 +35,8 @@ const NewProduct = () => {
         </section>
       </div>
       <div>
-              <h1 className="text-center text-4xl font-semibold">New Product Here</h1>
-              <AllProduct/>
+        <h1 className="text-center text-4xl font-semibold">New Product Here</h1>
+        <AllProduct />
       </div>
     </div>
   );
