@@ -20,10 +20,12 @@ const AllProduct = () => {
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["product", axios],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/api/v1/all-product");
+      const res = await axios.get("/all-product");
       return res.data;
     },
   });
+
+
   if (isLoading) return <Loader />;
 
   const handleAddToCart = async (product) => {
