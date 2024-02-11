@@ -1,30 +1,31 @@
-
 import useCart from "../../Hooks/useCart";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
 
 const Cart = () => {
-    const [cartData, refetch] = useCart();
-    const axios = useAxiosPublic();
+  const [cartData, refetch] = useCart();
+  const axios = useAxiosPublic();
+  const { darkMode, } = useAuth();
 
   const totalPrice = cartData.reduce((pre, sum) => pre + sum.price, 0);
 
-  const handleDeleted = async(id) => {
-      const res = await axios.delete(`/all-cart/${id}`);
-      if (res.data.deletedCount > 0) {
-          toast.info("Cart deleted successfully", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-          });
-          refetch()
-      }
+  const handleDeleted = async (id) => {
+    const res = await axios.delete(`/all-cart/${id}`);
+    if (res.data.deletedCount > 0) {
+      toast.info("Cart deleted successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      refetch();
+    }
   };
 
   const handleApply = () => {
@@ -43,7 +44,11 @@ const Cart = () => {
   return (
     <div className="max-w-screen-xl mx-auto mt-6 px-4">
       <h1 className="text-center text-3xl font-bold ">All cart Products :</h1>
-      <div className="h-96 overflow-y-scroll bg-[#f2f6f6] mt-5">
+      <div
+        className={`h-96 overflow-y-scroll ${
+          darkMode ? "" : "bg-[#f2f6f6]"
+        }  mt-5`}
+      >
         <table className="mt-4 w-full min-w-max table-auto text-left">
           <thead>
             <tr>

@@ -158,4 +158,3 @@ const Banner = () => {
 
 export default Banner;
 
-// https://i.postimg.cc/h4QkMtGD/slide4.jpg

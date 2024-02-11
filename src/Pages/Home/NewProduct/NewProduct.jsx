@@ -1,8 +1,14 @@
+import ScrollToTop from "react-scroll-to-top";
 import AllProduct from "./AllProduct";
 
 const NewProduct = () => {
   return (
     <div className="mt-10">
+      <ScrollToTop
+        className="flex items-center justify-center transition duration-100000 z-[999]"
+        color="#ef6f18"
+        smooth
+      />
       <div className="text-center">
         <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
           New Product
