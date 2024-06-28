@@ -8,17 +8,19 @@ import Testimonials from "../Testimonials/Testimonials";
 
 const Home = () => {
   return (
-    <div className="max-w-screen-xl mx-auto px-2">
+    <div >
       <ScrollToTop
         className="flex items-center justify-center transition duration-100000"
         color="#ef6f18"
         smooth
       />
       <Banner></Banner>
+      <div className="">
       <CategorySection></CategorySection>
       <NewProduct />
       <FaqQuestion />
       <Testimonials />
+      </div>
      
     </div>
   );

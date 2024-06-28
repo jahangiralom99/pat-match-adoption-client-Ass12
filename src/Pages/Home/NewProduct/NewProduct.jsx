@@ -3,13 +3,13 @@ import AllProduct from "./AllProduct";
 
 const NewProduct = () => {
   return (
-    <div className="mt-10">
+    <div className="mt-10 ">
       <ScrollToTop
         className="flex items-center justify-center transition duration-100000 z-[999]"
         color="#ef6f18"
         smooth
       />
-      <div className="text-center">
+      <div className=" max-w-screen-xl mx-auto px-4">
         <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
           New Product
         </h1>
@@ -40,7 +40,7 @@ const NewProduct = () => {
           </div>
         </section>
       </div>
-      <div>
+      <div className="max-w-screen-xl mx-auto px-4">
         <h1 className="text-center text-4xl font-semibold">New Product Here</h1>
         <AllProduct />
       </div>

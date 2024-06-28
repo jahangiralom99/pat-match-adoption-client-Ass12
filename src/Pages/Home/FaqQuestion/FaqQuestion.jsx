@@ -1,7 +1,7 @@
 
 const FaqQuestion = () => {
   return (
-    <section className="max-w-screen-xl mx-auto mt-16">
+    <section className="max-w-screen-xl mx-auto px-4 mt-16">
       <div className="md:flex items-center justify-center mt-4 gap-6">
         <div className="flex-1">
           <img src="https://i.postimg.cc/jd77G9Vq/TV.webp" alt="" />

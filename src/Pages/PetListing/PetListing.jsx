@@ -42,14 +42,14 @@ const PetListing = () => {
     setTextField(e.target.search.value);
   };
   return (
-    <section className="max-w-screen-xl mx-auto">
+    <section className="max-w-screen-xl mx-auto px-4">
       <ScrollToTop
         className="flex items-center justify-center transition duration-100000"
         color="#ef6f18"
         smooth
       />
       <form onSubmit={handleChange} className="flex justify-end mt-8 px-5">
-        <div>
+        <div className="flex flex-col gap-3 md:gap-0 md:flex-row">
           <input
             className="py-2 px-4 border border-[#ef6f18] rounded-lg"
             type="text"
@@ -57,18 +57,20 @@ const PetListing = () => {
             id="search"
             placeholder="Search"
           />
+          <div>
           <Button value={"search"}></Button>
+          </div>
         </div>
         <div>
           <Select
             className="px-3 border-[#ef6f18]"
             defaultValue={selectedOption}
             onChange={setSelectedOption}
-            options={options}
+            options={options} 
           />
         </div>
       </form>
-      <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
+      <h1 className="text-3xl font-bold border-l-4 mt-6 border-[#ef6f18]">
         Pets Listing section
       </h1>
       <p className="text-[#ef6f18] font-bold border-l-4 border-[#040404]">

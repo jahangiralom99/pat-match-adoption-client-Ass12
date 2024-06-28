@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CategorySection = () => {
   return (
-    <div className="mt-8 ">
+    <div className="mt-8 max-w-screen-xl mx-auto px-4 ">
       <h1 className="text-3xl font-bold border-l-4 border-[#ef6f18]">
         Pets category section
       </h1>

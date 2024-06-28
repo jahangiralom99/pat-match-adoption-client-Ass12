@@ -136,7 +136,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl mx-auto px-4 sticky">
         <div className="flex mx-auto justify-between ">
           {/* Primary menu and logo */}
-          <div className="flex items-center gap-16 my-6">
+          <div className="flex items-center gap-16 my-2">
             {/* logo */}
             <div>
               <a

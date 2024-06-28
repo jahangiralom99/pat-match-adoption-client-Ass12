@@ -39,9 +39,9 @@ const Footer = () => {
 
   return (
     <footer className=" ">
-      <div className="max-w-screen-xl mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-600">
+      <div className="max-w-screen-xl mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-600 ">
         {/* Left section with brand and social icons */}
-        <div className="">
+        <div className="px-6">
           <img
             className="w-40 h-30"
             src="https://i.postimg.cc/9fyR3mvn/logo-pat-removebg-preview.png"
@@ -52,7 +52,7 @@ const Footer = () => {
             ullam iste repellat consequatur libero reiciendis, blanditiis
             accusantium.
           </p>
-          <div className="flex justify-between md:w-[75%] my-6">
+          <div className="flex flex-wrap justify-between md:w-[75%] my-6">
             {/* Mapping over social icons and rendering the SocialIcon component */}
             {items.map((item, index) =>
               item.type === "icon" ? (
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Right section with footer content organized in sections */}
-        <div className="lg:col-span-2 flex justify-between mt-6">
+        <div className="lg:col-span-2 md:flex md:justify-between gap-7 px-6 mt-6">
           {/* Mapping over sections and rendering content */}
           {items.map((item, index) =>
             item.type === "section" ? (

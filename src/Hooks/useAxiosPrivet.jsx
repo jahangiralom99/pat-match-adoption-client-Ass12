@@ -29,8 +29,6 @@ const useAxiosPrivet = () => {
       navigate('/login')
     }
 
-   
-
     return Promise.reject(error);
   });
 

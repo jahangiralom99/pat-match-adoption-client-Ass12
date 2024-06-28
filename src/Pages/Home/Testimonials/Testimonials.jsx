@@ -1,7 +1,7 @@
 const Testimonials = () => {
   return (
     <div>
-      <section className="px-4 mt-16">
+      <section className="max-w-screen-xl mx-auto px-4 mt-16">
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="mb-6 text-2xl font-bold text-[#ef6f18]">
             Testimonials

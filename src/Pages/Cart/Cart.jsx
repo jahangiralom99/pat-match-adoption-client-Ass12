@@ -10,6 +10,7 @@ const Cart = () => {
   const { darkMode, } = useAuth();
 
   const totalPrice = cartData.reduce((pre, sum) => pre + sum.price, 0);
+  const mainPrice = totalPrice.toFixed(2)
 
   const handleDeleted = async (id) => {
     const res = await axios.delete(`/all-cart/${id}`);
@@ -135,7 +136,7 @@ const Cart = () => {
         </div>
         <div>
           <h1 className="text-xl font-bold uppercase mt-12 md:mt-0">
-            Total Price : <span className="text-[#ef6f18]">{totalPrice} $</span>
+            Total Price : <span className="text-[#ef6f18]">{mainPrice} $</span>
           </h1>
         </div>
         <div className="flex items-center justify-center mt-12 md:mt-0">

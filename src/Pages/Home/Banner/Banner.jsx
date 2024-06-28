@@ -10,6 +10,7 @@ import "swiper/css/scrollbar";
 // import required modules
 import { Scrollbar } from "swiper/modules";
 import Button from "../../../Components/Common/Button";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -40,8 +41,12 @@ const Banner = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
-                  <Button value="Adoption"></Button>
-                  <Button value="Donation"></Button>
+                  <Link to="/pet-listing">
+                    <Button value="Adoption"></Button>
+                  </Link>
+                  <Link to="/donation-campaign">
+                    <Button value="Donation"></Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -66,7 +71,9 @@ const Banner = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
-                  <Button value="Adoption"></Button>
+                  <Link to="/pet-listing">
+                    <Button value="Adoption"></Button>
+                  </Link>
                   <Button value="Donation"></Button>
                 </div>
               </div>
@@ -92,7 +99,9 @@ const Banner = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
-                  <Button value="Adoption"></Button>
+                  <Link to="/pet-listing">
+                    <Button value="Adoption"></Button>
+                  </Link>
                   <Button value="Donation"></Button>
                 </div>
               </div>
@@ -118,7 +127,9 @@ const Banner = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
-                  <Button value="Adoption"></Button>
+                  <Link to="/pet-listing">
+                    <Button value="Adoption"></Button>
+                  </Link>
                   <Button value="Donation"></Button>
                 </div>
               </div>
@@ -144,7 +155,9 @@ const Banner = () => {
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-4 text-center">
-                  <Button value="Adoption"></Button>
+                  <Link to="/pet-listing">
+                    <Button value="Adoption"></Button>
+                  </Link>
                   <Button value="Donation"></Button>
                 </div>
               </div>
@@ -157,4 +170,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
